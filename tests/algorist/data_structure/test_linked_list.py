@@ -27,9 +27,9 @@ class ListDemoTest(TestCase):
         l = List()
 
         for line in input:
-            tokens = line.split(' ')
+            tokens = line[:-1].split(' ')
 
-            c = tokens[0][0].lower()
+            c = tokens[0].lower()
             if c == 'p':
                 l.print()
             elif c == 'i':
