@@ -33,7 +33,8 @@ def execute(testcase, input_filename, output_filename):
             testcase.process()
 
     expected_path = path.join(data_dir, output_filename)
-    return filecmp.cmp(output_path, expected_path)
+    if not filecmp.cmp(output_path, expected_path, False):
+        raise AssertionError("Result differs")
 
 
 def _root_dir():

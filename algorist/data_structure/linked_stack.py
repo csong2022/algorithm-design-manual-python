@@ -49,3 +49,4 @@ class Stack:
         for x in self:
             print(x, end=' '),
         print()
+

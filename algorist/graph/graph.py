@@ -19,6 +19,10 @@ class WeightedEdgeNode:
 
 
 class Graph:
+    """
+    A generic adjacency list graph data type.
+    """
+
     def __init__(self, nvertices, directed):
         self.edges = [List() for i in range(nvertices + 1)]  # adjacency info
         self.degree = [0] * (nvertices + 1)  # outdegree of each vertex
@@ -66,36 +70,46 @@ class Graph:
 
     def print(self):
         for i in range(1, self.nvertices + 1):
-            print("%d: " % i),
+            print("%d: " % i, end='')
 
             for p in self.edges[i]:
-                print(" %d", p.y),
+                print(" %d" % p.y, end='')
             print()
 
 
-class UnweightedGraphReader:
+class UnweightedEdgeReader:
+    def read_edge(self, input):
+        x, y = list(map(int, input.readline().split()))
+        n = UnweightedEdgeNode(y)
+        return x, n
+
+
+class WeightedEdgeReader:
+    def read_edge(self, input):
+        x, y, w = list(map(int, input.readline().split()))
+        n = WeightedEdgeNode(y, w)
+        return x, n
+
+
+class GraphReader:
+    def __init__(self, edge_reader):
+        self.edge_reader = edge_reader
+
+    @staticmethod
+    def unweighted():
+        return GraphReader(UnweightedEdgeReader())
+
+    @staticmethod
+    def weighted():
+        return GraphReader(WeightedEdgeReader())
+
     def read_graph(self, input, directed):
         nvertices, nedges = list(map(int, input.readline().split()))
 
         g = Graph(nvertices, directed)
 
         for i in range(nedges):
-            x, y = list(map(int, input.readline().split()))
-            n = UnweightedEdgeNode(y)
-            g.insert_edge(x, n, directed)
-
-        return g
-
-
-class WeightedGraphReader:
-    def read_graph(self, input, directed):
-        nvertices, nedges = list(map(int, input.readline().split()))
-
-        g = Graph(nvertices, directed)
-
-        for i in range(nedges):
-            x, y, w = list(map(int, input.readline().split()))
-            n = WeightedEdgeNode(y, w)
+            x, n = self.edge_reader.read_edge(input)
             g.insert_edge(x, n, directed)
 
         return g
