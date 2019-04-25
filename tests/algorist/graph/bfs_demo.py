@@ -1,16 +1,13 @@
 from unittest import TestCase
 
 from algorist.graph.bfs_dfs import BFS
-from algorist.graph.graph import GraphReader
+from algorist.graph.graph import GraphReader, GraphSearchCallback
 from tests.algorist.test.test_engine import execute
 
 
-class BFSDemoCallback:
+class BFSDemoCallback(GraphSearchCallback):
     def process_vertex_early(self, v):
         print("processed vertex %d" % v)
-
-    def process_vertex_late(self, v):
-        pass
 
     def process_edge(self, x, y):
         print("processed edge (%d,%d)" % (x, y))

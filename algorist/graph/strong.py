@@ -1,5 +1,6 @@
 from algorist.data_structure.linked_stack import Stack
 from algorist.graph.bfs_dfs import EdgeType, DFS
+from algorist.graph.graph import GraphSearchCallback
 
 
 def strong_components(g):
@@ -14,7 +15,7 @@ def strong_components(g):
             dfs.search(i, callback)
 
 
-class StrongCallback:
+class StrongCallback(GraphSearchCallback):
     def __init__(self, g, dfs):
         self.dfs = dfs
 

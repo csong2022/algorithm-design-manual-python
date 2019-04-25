@@ -1,11 +1,11 @@
 from unittest import TestCase
 
 from algorist.graph.bfs_dfs import EdgeType, DFS
-from algorist.graph.graph import GraphReader
+from algorist.graph.graph import GraphReader, GraphSearchCallback
 from tests.algorist.test.test_engine import execute
 
 
-class DFSDemoCallback:
+class DFSDemoCallback(GraphSearchCallback):
     def __init__(self, dfs):
         self.dfs = dfs
 

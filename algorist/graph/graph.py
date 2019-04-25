@@ -18,6 +18,20 @@ class WeightedEdgeNode:
         return WeightedEdgeNode(v, self.weight)
 
 
+class GraphSearchCallback:
+    def process_vertex_early(self, v):
+        pass
+
+    def process_vertex_late(self, v):
+        pass
+
+    def process_edge(self, x, y):
+        pass
+
+    def valid_edge(self, p):
+        return True
+
+
 class Graph:
     """
     A generic adjacency list graph data type.
