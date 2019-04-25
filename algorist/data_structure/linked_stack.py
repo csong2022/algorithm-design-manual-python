@@ -46,4 +46,7 @@ class Stack:
         return StackIterator(self.first)
 
     def print(self):
-        print(' '.join(str(x) for x in self))
+        for x in self:
+            print(x, end=' '),
+        print()
+
