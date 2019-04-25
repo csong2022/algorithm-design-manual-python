@@ -60,9 +60,7 @@ class PriorityQueue:
 
     def swap(self, i, j):
         if i != j:
-            tmp = self.q[i]
-            self.q[i] = self.q[j]
-            self.q[j] = tmp
+            self.q[i], self.q[j] = self.q[j], self.q[i]
 
     def print(self):
         print(self.q[1: self.n], end=' ')
