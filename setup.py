@@ -18,6 +18,6 @@ setup(
     author_email='csong2022@berkeley.edu',
     url='https://github.com/csong2022/algorithm-design-manual-python',
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs', 'out', 'datafiles', '.idea'))
 )
 
