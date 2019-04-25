@@ -53,7 +53,7 @@ def binary_search(s, key, low, high):
     if low > high:  # key not found
         return -1
 
-    middle = (low + high) // 2  # index of middle element
+    middle = (low + high) // 2  # index of middle element, this is integer divide
     if s[middle] == key:
         return middle
     elif s[middle] > key:
@@ -70,7 +70,7 @@ def mergesort(s, low, high):
 
 def _mergesort(s, aux, low, high):
     if low < high:
-        middle = (low + high) // 2  # index of middle element
+        middle = (low + high) // 2  # index of middle element, this is integer divide
         _mergesort(s, aux, low, middle)
         _mergesort(s, aux, middle + 1, high)
 
