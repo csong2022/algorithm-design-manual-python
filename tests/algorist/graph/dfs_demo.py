@@ -50,4 +50,4 @@ class DFSDemoTest(TestCase):
             print(path, end=' ')
 
     def test(self):
-        execute(self, "grid", "grid-dfs-demo-out")
+        self.assertTrue(execute(self, "grid", "grid-dfs-demo-out"))

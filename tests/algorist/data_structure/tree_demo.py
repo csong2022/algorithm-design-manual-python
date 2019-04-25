@@ -31,4 +31,4 @@ class TreeDemoTest(TestCase):
                 l.print()
 
     def test(self):
-        execute(self, "list-in", "treelist-out")
+        self.assertTrue(execute(self, "list-in", "treelist-out"))

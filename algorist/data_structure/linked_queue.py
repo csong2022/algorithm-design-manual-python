@@ -59,6 +59,5 @@ class Queue:
         return QueueIterator(self.first)
 
     def print(self):
-        for x in self:
-            print(x, end=' '),
-        print()
+        print(' '.join(str(x) for x in self))
+

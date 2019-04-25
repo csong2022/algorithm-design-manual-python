@@ -14,14 +14,14 @@ class TestBipartite(TestCase):
         bipartite = Bipartite(g)
 
         for i in range(1, g.nvertices + 1):
-            print(" %d", bipartite.color[i]),
+            print(" %d" % bipartite.color[i].value, end='')
         print()
 
     def test_grid(self):
-        execute(self, "grid", "bipartite-grid")
+        self.assertTrue(execute(self, "grid", "bipartite-grid"))
 
     def test_tree(self):
-        execute(self, "tree", "bipartite-tree")
+        self.assertTrue(execute(self, "tree", "bipartite-tree"))
 
     def test_art3(self):
-        execute(self, "art3", "bipartite-art3")
+        self.assertTrue(execute(self, "art3", "bipartite-art3"))

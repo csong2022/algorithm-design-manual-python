@@ -70,10 +70,10 @@ class Graph:
 
     def print(self):
         for i in range(1, self.nvertices + 1):
-            print("%d: " % i),
+            print("%d: " % i, end='')
 
             for p in self.edges[i]:
-                print(" %d", p.y),
+                print(" %d" % p.y, end='')
             print()
 
 

@@ -14,7 +14,7 @@ class TestConnected(TestCase):
         connected_components(g)
 
     def test_connected(self):
-        execute(self, "connected-in", "connected-out")
+        self.assertTrue(execute(self, "connected-in", "connected-out"))
 
     def test_grid(self):
-        execute(self, "grid", "grid-connected-out")
+        self.assertTrue(execute(self, "grid", "grid-connected-out"))

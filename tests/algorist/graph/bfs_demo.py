@@ -27,13 +27,13 @@ class BFSDemoTest(TestCase):
         bfs.search(1, callback)
 
         for i in range(1, g.nvertices + 1):
-            print(" %d" % bfs.parent[i]),
+            print(" %d" % bfs.parent[i], end='')
         print()
 
         print()
         for i in range(1, g.nvertices + 1):
             path = bfs.find_path(1, i)
-            print(path, end=' ')
+            path.print()
 
     def test(self):
-        execute(self, "grid", "grid-bfs-demo-out")
+        self.assertTrue(execute(self, "grid", "grid-bfs-demo-out"))
