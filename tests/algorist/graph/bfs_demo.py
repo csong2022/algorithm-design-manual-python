@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from algorist.graph.bfs_dfs import BFS
-from algorist.graph.graph import UnweightedGraphReader
+from algorist.graph.graph import GraphReader
 from tests.algorist.test.test_engine import execute
 
 
@@ -18,7 +18,7 @@ class BFSDemoCallback:
 
 class BFSDemoTest(TestCase):
     def process(self, input):
-        reader = UnweightedGraphReader()
+        reader = GraphReader.unweighted()
         g = reader.read_graph(input, False)
         g.print()
 
