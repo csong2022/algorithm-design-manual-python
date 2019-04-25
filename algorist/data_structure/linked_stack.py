@@ -32,7 +32,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise IndexError('pop from an empty stack')
+            raise IndexError('Stack underflow')
         else:
             x = self.first.item
             self.first = self.first.next

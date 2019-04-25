@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from algorist.data_structure.singly_linked_list import List
+from algorist.data_structure.linked_list import List
 from tests.algorist.test.test_engine import execute
 
 
