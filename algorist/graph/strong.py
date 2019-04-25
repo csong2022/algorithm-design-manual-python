@@ -36,8 +36,7 @@ class StrongCallback:
             self.pop_component(v)
 
         parent = self.dfs.parent[v]
-        if parent > 0 and self.dfs.entry_time[self.low[v]] < self.dfs.entry_time[
-            self.low[parent]]:
+        if parent > 0 and self.entry_time(self.low[v]) < self.entry_time(self.low[parent]):
             self.low[parent] = self.low[v]
 
     def pop_component(self, v):
@@ -57,9 +56,12 @@ class StrongCallback:
         classification = self.dfs.edge_classification(x, y)
 
         if classification == EdgeType.BACK:
-            if self.dfs.entry_time[y] < self.dfs.entry_time[self.low[x]]:
+            if self.entry_time(y) < self.entry_time(self.low[x]):
                 self.low[x] = y
         if classification == EdgeType.CROSS:
             if self.scc[y] == -1:
-                if self.dfs.entry_time[y] < self.dfs.entry_time[self.low[x]]:
+                if self.entry_time(y) < self.entry_time(self.low[x]):
                     self.low[x] = y
+
+    def entry_time(self, v):
+        return self.dfs.entry_time[v]
