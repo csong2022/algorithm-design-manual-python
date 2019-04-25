@@ -5,11 +5,7 @@ class AdjacencyMatrix:
     def __init__(self, nvertices):
         self.nvertices = nvertices  # number of vertices in the graph
         # adjacency/weight info
-        self.weight = [[0] * (nvertices + 1) for i in range(nvertices + 1)]
-
-        for i in range(1, nvertices + 1):
-            for j in range(1, nvertices + 1):
-                self.weight[i][j] = MAXINT
+        self.weight = [[MAXINT] * (nvertices + 1) for i in range(nvertices + 1)]
 
     @staticmethod
     def read_adjacency_matrix(input, directed):
