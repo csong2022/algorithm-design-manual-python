@@ -18,10 +18,10 @@ class TestBipartite(TestCase):
         print()
 
     def test_grid(self):
-        self.assertTrue(execute(self, "grid", "bipartite-grid"))
+        execute(self, "grid", "bipartite-grid")
 
     def test_tree(self):
-        self.assertTrue(execute(self, "tree", "bipartite-tree"))
+        execute(self, "tree", "bipartite-tree")
 
     def test_art3(self):
-        self.assertTrue(execute(self, "art3", "bipartite-art3"))
+        execute(self, "art3", "bipartite-art3")

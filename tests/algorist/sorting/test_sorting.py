@@ -40,6 +40,7 @@ class TestSorting(TestCase):
         self.init_arr(s)
         mergesort(s, 0, len(s) - 1)
         self.assertTrue(is_sorted(s))
+        print()
 
         for i in range(len(s)):
             s[i] = 2 * (len(s) - i)
@@ -61,8 +62,7 @@ class TestSorting(TestCase):
 
     def print_arr(self, s):
         for i in range(len(s)):
-            print('%d ' % s[i]),
-        print()
+            print('%d ' % s[i], end='')
 
     def test(self):
         execute(self, None, "sorting-out")

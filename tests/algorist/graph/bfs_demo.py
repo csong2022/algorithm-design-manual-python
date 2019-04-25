@@ -36,4 +36,4 @@ class BFSDemoTest(TestCase):
             path.print()
 
     def test(self):
-        self.assertTrue(execute(self, "grid", "grid-bfs-demo-out"))
+        execute(self, "grid", "grid-bfs-demo-out")

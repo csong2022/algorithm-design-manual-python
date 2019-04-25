@@ -51,4 +51,4 @@ class ListDemoTest(TestCase):
                 l.delete(d)
 
     def test(self):
-        self.assertTrue(execute(self, "list-in", "list-out"))
+        execute(self, "list-in", "list-out")
