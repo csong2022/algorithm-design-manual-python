@@ -58,7 +58,7 @@ class StrongCallback:
         if classification == EdgeType.BACK:
             if self.entry_time(y) < self.entry_time(self.low[x]):
                 self.low[x] = y
-        if classification == EdgeType.CROSS:
+        elif classification == EdgeType.CROSS:
             if self.scc[y] == -1:
                 if self.entry_time(y) < self.entry_time(self.low[x]):
                     self.low[x] = y
