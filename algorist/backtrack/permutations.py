@@ -2,6 +2,10 @@ from algorist.backtrack.backtrack import BacktrackCallback
 
 
 class Permutations(BacktrackCallback):
+    """
+    Construct all permutations via backtracking.
+    """
+
     def is_a_solution(self, a, k, n):
         return k == n
 

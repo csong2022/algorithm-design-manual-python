@@ -2,6 +2,10 @@ from algorist.backtrack.backtrack import BacktrackCallback, NMAX
 
 
 class Paths(BacktrackCallback):
+    """
+    Enumerate the paths in a graph via backtracking.
+    """
+
     def __init__(self, g):
         self.g = g
         self.solutionCount = 0
