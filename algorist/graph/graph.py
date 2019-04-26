@@ -28,7 +28,7 @@ class GraphSearchCallback:
     def process_edge(self, x, y):
         pass
 
-    def valid_edge(self, p):
+    def valid_edge(self, e):
         return True
 
 
