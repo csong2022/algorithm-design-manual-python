@@ -3,6 +3,9 @@ from functools import cmp_to_key
 from algorist.geometry.geometry import collinear, distance, ccw, Polygon, cw
 
 
+# Compute convex hulls of points in the plane using the
+# Gries/Graham scan algorithm.
+
 def convex_hull(_in, n):
     if n <= 3:  # all points on hull!
         return Polygon(_in, n)
