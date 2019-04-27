@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from algorist.geometry.geometry import Point, points_to_line, point_and_slope_to_line, parallelQ, intersection_point, \
-    closest_point
+    closest_point, read_point
 from tests.algorist.test.test_engine import execute
 
 
@@ -9,13 +9,12 @@ class GeoTest(TestCase):
 
     def process(self, input):
         while True:
-            line = input.readline()
-            if not line:
+            p1 = read_point(input)
+            if p1 is None:
                 break
-            p1 = self.read_point(line)
-            p2 = self.read_point(input.readline())
-            q1 = self.read_point(input.readline())
-            q2 = self.read_point(input.readline())
+            p2 = read_point(input)
+            q1 = read_point(input)
+            q2 = read_point(input)
 
             p1.print()
             p2.print()
@@ -71,10 +70,6 @@ class GeoTest(TestCase):
             i.print()
 
             print("--------------------------------")
-
-    def read_point(self, line):
-        x, y = list(map(float, line.split()))
-        return Point(x, y)
 
     def test(self):
         execute(self, "geotest-in", "geotest-out")

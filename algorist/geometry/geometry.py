@@ -15,8 +15,26 @@ class Point:
         self.x = x  # x-coordinat
         self.y = y  # y-coordinate
 
+    def __eq__(self, other):
+        """Overrides the default implementation"""
+        if isinstance(other, Point):
+            return self.x == other.x and self.y == other.y
+        return False
+
+    def __ne__(self, other):
+        """Overrides the default implementation (unnecessary in Python 3)"""
+        return not self.__eq__(other)
+
     def print(self):
         print("%7.3lf %7.3lf" % (self.x, self.y))
+
+    @staticmethod
+    def print_points(p, n):
+        for i in range(n):
+            print(str(p[i]))
+
+    def __str__(self):
+        return "(%lf,%lf)" % (self.x, self.y)
 
 
 class Line:
@@ -26,7 +44,10 @@ class Line:
         self.c = c  # constant term
 
     def print(self):
-        print("(a=%7.3lf,b=%7.3lf,c=%7.3lf)" % (self.a, self.b, self.c))
+        print(str(self))
+
+    def __str__(self):
+        return "(a=%7.3lf,b=%7.3lf,c=%7.3lf)" % (self.a, self.b, self.c)
 
 
 class Segment:
@@ -46,8 +67,7 @@ class Polygon:
         self.n = n  # number of points in polygon
 
     def print(self):
-        for i in range(self.n):
-            print("(%lf,%lf)" % (self.p[i].x, self.p[i].y))
+        Point.print_points(self.p, self.n)
 
 
 class Triangle:
@@ -201,6 +221,20 @@ def collinear(a, b, c):
     return abs(signed_triangle_area(a, b, c)) <= EPSILON
 
 
-def print_points(p, n):
+def read_point(input):
+    line = input.readline()
+    if not line:
+        return None
+    else:
+        x, y = list(map(float, line.split()))
+        return Point(x, y)
+
+
+def read_points(input):
+    n = int(input.readline()[:-1])  # number of points
+
+    p = []
     for i in range(n):
-        print("(%lf,%lf)" % (p[i].x, p[i].y))
+        p.append(read_point(input))
+
+    return p
