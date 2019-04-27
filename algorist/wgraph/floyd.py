@@ -1,14 +1,16 @@
+from algorist.graph.graph import Graph
+
 MAXINT = 100007
 
 
 class AdjacencyMatrix:
-    def __init__(self, nvertices):
+    def __init__(self, nvertices: int):
         self.nvertices = nvertices  # number of vertices in the graph
         # adjacency/weight info
         self.weight = [[MAXINT] * (nvertices + 1) for i in range(nvertices + 1)]
 
     @staticmethod
-    def read_adjacency_matrix(input, directed):
+    def read_adjacency_matrix(input, directed: bool) -> Graph:
         nvertices, m = list(map(int, input.readline().split()))
 
         g = AdjacencyMatrix(nvertices)
@@ -21,7 +23,7 @@ class AdjacencyMatrix:
 
         return g
 
-    def print_graph(self):
+    def print_graph(self) -> None:
         for i in range(1, self.nvertices + 1):
             print("%d: " % i, end='')
             for j in range(1, self.nvertices + 1):
@@ -29,7 +31,7 @@ class AdjacencyMatrix:
                     print(" %d" % j, end='')
             print()
 
-    def print(self):
+    def print(self) -> None:
         for i in range(1, self.nvertices + 1):
             print("%3d: " % i, end='')
             for j in range(1, self.nvertices + 1):
@@ -37,7 +39,7 @@ class AdjacencyMatrix:
             print()
 
 
-def floyd(g):
+def floyd(g: Graph):
     """
     Compute all-pairs shortest paths in weighted graphs.
 

@@ -1,14 +1,15 @@
 from algorist.data_structure.set_union import SetUnion
+from algorist.graph.graph import Graph
 
 
 class EdgePair:
-    def __init__(self, x, y, weight):
+    def __init__(self, x: int, y: int, weight: int):
         self.x = x  # adjacency info
         self.y = y
         self.weight = weight  # edge weight, if any
 
 
-def to_edge_array(g):
+def to_edge_array(g: Graph) -> list:
     e = [None] * (g.nedges + 1)
 
     m = 0
@@ -21,7 +22,7 @@ def to_edge_array(g):
     return e
 
 
-def kruskal(g):
+def kruskal(g: Graph) -> None:
     """
     Compute minimum spanning trees of graphs via Kruskal's algorithm.
     :param g: weighted graph.
