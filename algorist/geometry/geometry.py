@@ -35,7 +35,7 @@ class Segment:
         self.p2 = p2
 
     def print(self):
-        print("segment: ")
+        print("segment: ", end='')
         self.p1.print()
         self.p2.print()
 
