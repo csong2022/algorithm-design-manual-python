@@ -86,6 +86,12 @@ class Triangulation:
         self.t.append([i, j, k])
         self.n += 1
 
+    def print(self) -> None:
+        for i in range(self.n):
+            for j in range(3):
+                print(" %d " % self.t[i][j], end='')
+            print()
+
 
 class Circle:
     def __init__(self, c: Point, r: float):
