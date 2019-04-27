@@ -1,15 +1,10 @@
 from algorist.graph.bfs_dfs import BFS
+from algorist.graph.graph import GraphSearchCallback
 
 
-class ConnectedCallback:
+class ConnectedCallback(GraphSearchCallback):
     def process_vertex_early(self, v):
         print(" %d" % v, end='')
-
-    def process_vertex_late(self, v):
-        pass
-
-    def process_edge(self, x, y):
-        pass
 
 
 def connected_components(g):

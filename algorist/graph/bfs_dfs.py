@@ -63,13 +63,14 @@ class BFS(AbstractGraphSearch):
             self.processed[v] = True
 
             for p in self.g.edges[v]:
-                y = p.y
-                if (not self.processed[y]) or self.g.directed:
-                    callback.process_edge(v, y)
-                if not self.discovered[y]:
-                    q.enqueue(y)
-                    self.discovered[y] = True
-                    self.parent[y] = v
+                if callback.valid_edge(p):
+                    y = p.y
+                    if (not self.processed[y]) or self.g.directed:
+                        callback.process_edge(v, y)
+                    if not self.discovered[y]:
+                        q.enqueue(y)
+                        self.discovered[y] = True
+                        self.parent[y] = v
 
             callback.process_vertex_late(v)
 

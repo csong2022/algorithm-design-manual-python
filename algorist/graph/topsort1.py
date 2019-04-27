@@ -1,14 +1,12 @@
 from algorist.data_structure.linked_stack import Stack
 from algorist.graph.bfs_dfs import EdgeType, DFS
+from algorist.graph.graph import GraphSearchCallback
 
 
-class TopSort1Callback:
+class TopSort1Callback(GraphSearchCallback):
     def __init__(self, dfs):
         self.dfs = dfs
         self.sorted = Stack()
-
-    def process_vertex_early(self, v):
-        pass
 
     def process_vertex_late(self, v):
         self.sorted.push(v)

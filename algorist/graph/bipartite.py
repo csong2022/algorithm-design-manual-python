@@ -1,6 +1,7 @@
 from enum import Enum
 
 from algorist.graph.bfs_dfs import BFS
+from algorist.graph.graph import GraphSearchCallback
 
 
 class Color(Enum):
@@ -33,15 +34,9 @@ class Bipartite:
                 bfs.search(i, callback)
 
 
-class BipartiteCallback:
+class BipartiteCallback(GraphSearchCallback):
     def __init__(self, bipartite):
         self.bipartite = bipartite
-
-    def process_vertex_early(self, v):
-        pass
-
-    def process_vertex_late(self, v):
-        pass
 
     def process_edge(self, x, y):
         if self.bipartite.color[x] == self.bipartite.color[y]:
