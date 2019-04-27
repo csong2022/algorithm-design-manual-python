@@ -1,3 +1,5 @@
+# Demonstrate traversal orders on a grid.
+
 def row_major(n, m):
     for i in range(1, n + 1):
         for j in range(1, m + 1):

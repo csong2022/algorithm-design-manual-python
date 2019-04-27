@@ -88,6 +88,9 @@ class Circle:
         self.c = c  # center of circle
         self.r = r  # radius of circle
 
+    def print(self):
+        print("%7.3lf %7.3lf %7.3lf" % (self.c.x, self.c.y, self.r))
+
 
 def points_to_line(p1, p2):
     if p1.x == p2.x:
@@ -238,3 +241,9 @@ def read_points(input):
         p.append(read_point(input))
 
     return p
+
+
+def read_circle(input):
+    line = input.readline()
+    x, y, r = list(map(float, line.split()))
+    return Circle(Point(x, y), r)
