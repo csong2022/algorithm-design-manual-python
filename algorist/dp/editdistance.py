@@ -1,4 +1,4 @@
-from algorist.dp.cell import MATCH, INSERT, DELETE, Cell
+from algorist.dp.editdistance_cell import MATCH, INSERT, DELETE, Cell
 from algorist.dp.stringedit import StringEdit
 
 MAXLEN = 101  # longest possible string

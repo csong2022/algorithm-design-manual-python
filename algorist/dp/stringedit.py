@@ -1,4 +1,4 @@
-from algorist.dp.cell import Cell, INSERT, DELETE
+from algorist.dp.editdistance_cell import Cell, INSERT, DELETE
 
 
 class StringEdit:
