@@ -1,7 +1,8 @@
 from algorist.data_structure.linked_queue import Queue
+from algorist.graph.graph import Graph
 
 
-def compute_indegrees(g):  # indegree of each vertex
+def compute_indegrees(g: Graph):  # indegree of each vertex
     indegree = [0] * (g.nvertices + 1)
 
     for i in range(1, g.nvertices + 1):
@@ -11,7 +12,7 @@ def compute_indegrees(g):  # indegree of each vertex
     return indegree
 
 
-def topsort(g):
+def topsort(g: Graph):
     sorted = [None] * (g.nvertices + 1)
     indegree = compute_indegrees(g)
 

@@ -1,9 +1,9 @@
 from algorist.data_structure.linked_stack import Stack
 from algorist.graph.bfs_dfs import EdgeType, DFS
-from algorist.graph.graph import GraphSearchCallback
+from algorist.graph.graph import GraphSearchCallback, Graph
 
 
-def strong_components(g):
+def strong_components(g: Graph):
     """
     Identify strongly connected components in a graph.
     """
@@ -16,7 +16,7 @@ def strong_components(g):
 
 
 class StrongCallback(GraphSearchCallback):
-    def __init__(self, g, dfs):
+    def __init__(self, g: Graph, dfs: DFS):
         self.dfs = dfs
 
         self.low = [0] * (g.nvertices + 1)  # oldest vertex surely in component of v
@@ -29,10 +29,10 @@ class StrongCallback(GraphSearchCallback):
         self.components_found = 0  # number of strong components identified
         self.active = Stack()  # active vertices of unassigned component
 
-    def process_vertex_early(self, v):
+    def process_vertex_early(self, v: int) -> None:
         self.active.push(v)
 
-    def process_vertex_late(self, v):
+    def process_vertex_late(self, v: int) -> None:
         if self.low[v] == v:  # edge (parent[v],v) cuts off scc
             self.pop_component(v)
 
@@ -40,7 +40,7 @@ class StrongCallback(GraphSearchCallback):
         if parent > 0 and self.entry_time(self.low[v]) < self.entry_time(self.low[parent]):
             self.low[parent] = self.low[v]
 
-    def pop_component(self, v):
+    def pop_component(self, v: int) -> None:
         self.components_found += 1
         print("%d is in component %d " % (v, self.components_found));
 
@@ -53,7 +53,7 @@ class StrongCallback(GraphSearchCallback):
             self.scc[t] = self.components_found
             print("%d is in component %d with %d " % (t, self.components_found, v));
 
-    def process_edge(self, x, y):
+    def process_edge(self, x: int, y: int) -> None:
         classification = self.dfs.edge_classification(x, y)
 
         if classification == EdgeType.BACK:
@@ -64,5 +64,5 @@ class StrongCallback(GraphSearchCallback):
                 if self.entry_time(y) < self.entry_time(self.low[x]):
                     self.low[x] = y
 
-    def entry_time(self, v):
+    def entry_time(self, v: int) -> None:
         return self.dfs.entry_time[v]

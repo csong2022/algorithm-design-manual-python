@@ -1,18 +1,20 @@
+from collections import Iterable
 from enum import Enum
 
 from algorist.data_structure.linked_queue import Queue
 from algorist.data_structure.linked_stack import Stack
+from algorist.graph.graph import Graph, GraphSearchCallback
 
 
 class GraphSearchUtils:
     @staticmethod
-    def find_path(start, end, parents):
+    def find_path(start: int, end: int, parents: list) -> Iterable:
         path = Stack()
         GraphSearchUtils._find_path(start, end, parents, path)
         return path
 
     @staticmethod
-    def _find_path(start, end, parents, path):
+    def _find_path(start: int, end: int, parents: list, path: Stack) -> None:
         if start == end or end == -1:
             path.push(start)
         else:
@@ -21,7 +23,7 @@ class GraphSearchUtils:
 
 
 class AbstractGraphSearch:
-    def __init__(self, g):
+    def __init__(self, g: Graph):
         assert g is not None, "Graph not set."
 
         self.g = g
@@ -35,7 +37,7 @@ class AbstractGraphSearch:
             self.processed[i] = self.discovered[i] = False
             self.parent[i] = -1
 
-    def find_path(self, start, end):
+    def find_path(self, start: int, end: int) -> Iterable:
         assert 1 <= start <= self.g.nvertices, "Invalid vertex %d" % start
         assert 1 <= end <= self.g.nvertices, "Invalid vertex %d" % end
 
@@ -47,10 +49,10 @@ class BFS(AbstractGraphSearch):
     A generic implementation of graph traversal: breadth-first and depth-first search
     """
 
-    def __init__(self, g):
+    def __init__(self, g: Graph):
         super().__init__(g)
 
-    def search(self, start, callback):
+    def search(self, start: int, callback: GraphSearchCallback) -> None:
         assert 1 <= start <= self.g.nvertices, "Invalid vertex %d" % start
 
         q = Queue()
@@ -90,7 +92,7 @@ class DFS(AbstractGraphSearch):
     A generic implementation of graph traversal: depth-first search.
     """
 
-    def __init__(self, g):
+    def __init__(self, g: Graph):
         super().__init__(g)
         self.entry_time = [0] * (g.nvertices + 1)  # time of vertex entry
         self.exit_time = [0] * (g.nvertices + 1)  # time of vertex exit
@@ -101,7 +103,7 @@ class DFS(AbstractGraphSearch):
         super().initialize()
         self.time = 0
 
-    def edge_classification(self, x, y):
+    def edge_classification(self, x: int, y: int) -> EdgeType:
         assert 1 <= x <= self.g.nvertices, "Invalid vertex %d" % x
         assert 1 <= y <= self.g.nvertices, "Invalid vertex %d" % y
 
@@ -117,7 +119,7 @@ class DFS(AbstractGraphSearch):
         print("Warning: self loop (%d,%d)" % (x, y))
         return None
 
-    def search(self, v, callback):
+    def search(self, v: int, callback: GraphSearchCallback) -> None:
         assert 1 <= v <= self.g.nvertices, "Invalid vertex %d" % v
 
         if self.finished:  # allow for search termination
