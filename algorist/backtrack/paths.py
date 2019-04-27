@@ -1,4 +1,5 @@
 from algorist.backtrack.backtrack import BacktrackCallback, NMAX
+from algorist.graph.graph import Graph
 
 
 class Paths(BacktrackCallback):
@@ -6,14 +7,14 @@ class Paths(BacktrackCallback):
     Enumerate the paths in a graph via backtracking.
     """
 
-    def __init__(self, g):
+    def __init__(self, g: Graph):
         self.g = g
         self.solutionCount = 0
 
-    def is_a_solution(self, a, k, t):
+    def is_a_solution(self, a: int, k: int, t: int) -> bool:
         return a[k] == t
 
-    def process_solution(self, a, k, n):
+    def process_solution(self, a: int, k: int, n: int) -> None:
         self.solutionCount += 1
 
         print("{", end='')
@@ -21,7 +22,7 @@ class Paths(BacktrackCallback):
             print(" %d" % a[i], end='')
         print(' }')
 
-    def construct_candidates(self, a, k, n):
+    def construct_candidates(self, a: int, k: int, n: int) -> int:
         c = [0] * NMAX
 
         in_sol = [False] * NMAX  # what's already in the solution?
