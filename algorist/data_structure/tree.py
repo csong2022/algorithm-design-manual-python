@@ -14,13 +14,13 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.root is None
 
     def __contains__(self, x):
         return self._search(self.root, x) is not None
 
-    def _search(self, l, x):
+    def _search(self, l: Node, x) -> Node:
         if l is None:
             return None
 
@@ -31,10 +31,10 @@ class Tree:
         else:
             return self._search(l.right, x)
 
-    def insert(self, x):
+    def insert(self, x) -> None:
         self.root = self._insert(self.root, x, None)
 
-    def _insert(self, l, x, parent):
+    def _insert(self, l: Node, x, parent: Node) -> Node:
         if l is None:
             return Node(x, parent)
 
@@ -44,16 +44,16 @@ class Tree:
             l.right = self._insert(l.right, x, l)
         return l
 
-    def print(self):
+    def print(self) -> None:
         self._print(self.root)
 
-    def _print(self, l):
+    def _print(self, l) -> None:
         if l is not None:
             self._print(l.left)
             print("%s " % l.item)
             self._print(l.right)
 
-    def _successor_descendant(self, t):
+    def _successor_descendant(self, t: Node) -> Node:
         if t.right is None:
             return None
 
@@ -63,7 +63,7 @@ class Tree:
 
         return succ
 
-    def _find_minimum(self, t):
+    def _find_minimum(self, t: Node) -> Node:
         if t is None:
             return None
 
@@ -72,7 +72,7 @@ class Tree:
             min = min.left
         return min
 
-    def _predecessor_descendant(self, t):
+    def _predecessor_descendant(self, t: Node) -> Node:
         if t.left is None:
             return None
 
@@ -85,7 +85,7 @@ class Tree:
     def delete(self, x):
         self.root = self._delete(self.root, x)
 
-    def _delete(self, t, x):
+    def _delete(self, t: Node, x) -> Node:
         d = self._search(t, x)
 
         if d is None:

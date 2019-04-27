@@ -5,7 +5,7 @@ class Node:
 
 
 class QueueIterator:
-    def __init__(self, first):
+    def __init__(self, first: Node):
         self.current = first
 
     def __next__(self):
@@ -21,12 +21,13 @@ class Queue:
     """
     Implementation of a FIFO queue abstract data type.
     """
+
     def __init__(self):
         self.count = 0  # number of queue elements
         self.first = None  # first element
         self.last = None  # last element
 
-    def enqueue(self, x):
+    def enqueue(self, x) -> None:
         old_last = self.last
         self.last = Node(x)
         if self.is_empty():
@@ -52,12 +53,11 @@ class Queue:
         else:
             return self.first.item
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.count == 0
 
     def __iter__(self):
         return QueueIterator(self.first)
 
-    def print(self):
+    def print(self) -> None:
         print(' '.join(str(x) for x in self))
-

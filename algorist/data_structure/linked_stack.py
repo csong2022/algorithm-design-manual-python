@@ -5,7 +5,7 @@ class Node:
 
 
 class StackIterator:
-    def __init__(self, first):
+    def __init__(self, first: Node):
         self.current = first
 
     def __next__(self):
@@ -26,7 +26,7 @@ class Stack:
         self.first = None  # top of stack
         self.n = 0  # number of stack elements
 
-    def push(self, x):
+    def push(self, x) -> None:
         self.first = Node(x, self.first)
         self.n += 1
 
@@ -39,14 +39,13 @@ class Stack:
             self.n -= 1
             return x
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.n == 0
 
     def __iter__(self):
         return StackIterator(self.first)
 
-    def print(self):
+    def print(self) -> None:
         for x in self:
             print(x, end=' '),
         print()
-
