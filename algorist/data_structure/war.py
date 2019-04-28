@@ -45,7 +45,7 @@ def testcards() -> None:
 
 
 def random_init_deck(a: Queue, b: Queue) -> None:
-    perm = [0] * [NCARDS]
+    perm = [0] * NCARDS
 
     for i in range(NCARDS):
         perm[i] = i

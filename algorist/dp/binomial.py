@@ -6,7 +6,7 @@ Translate from binomial.c.
 """
 
 
-def binomial_coefficient(n: int, m: int) -> list:
+def binomial_coefficient(n: int, m: int) -> int:
     """
     Compute the binomial coefficients using dynamic programming.
 

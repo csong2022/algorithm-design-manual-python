@@ -14,13 +14,13 @@ class AdjacencyMatrix:
         self.weight = [[MAXINT] * (nvertices + 1) for i in range(nvertices + 1)]
 
     @staticmethod
-    def read_adjacency_matrix(input, directed: bool) -> Graph:
-        nvertices, m = list(map(int, input.readline().split()))
+    def read_adjacency_matrix(_input, directed: bool):
+        nvertices, m = list(map(int, _input.readline().split()))
 
         g = AdjacencyMatrix(nvertices)
 
         for i in range(m):
-            x, y, w = list(map(int, input.readline().split()))
+            x, y, w = list(map(int, _input.readline().split()))
             g.weight[x][y] = w
             if not directed:
                 g.weight[y][x] = w
@@ -43,7 +43,7 @@ class AdjacencyMatrix:
             print()
 
 
-def floyd(g: Graph):
+def floyd(g: AdjacencyMatrix):
     """
     Compute all-pairs shortest paths in weighted graphs.
 

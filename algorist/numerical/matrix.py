@@ -20,13 +20,13 @@ class Matrix:
         print()
 
 
-def read_matrix(input) -> Matrix:
-    rows, columns = list(map(int, input.readline().split()))
+def read_matrix(_input) -> Matrix:
+    rows, columns = list(map(int, _input.readline().split()))
 
     matrix = Matrix(rows, columns)
 
     for i in range(1, rows + 1):
-        row = list(map(int, input.readline().split()))
+        row = list(map(int, _input.readline().split()))
         matrix.m[i][1:] = row
 
     return matrix
@@ -35,7 +35,7 @@ def read_matrix(input) -> Matrix:
 def multiply(a: Matrix, b: Matrix) -> Matrix:
     if a.columns != b.rows:
         print("Error: bounds dont match!")
-        return
+        return None
 
     c = Matrix(a.rows, b.columns)
 

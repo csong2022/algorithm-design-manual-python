@@ -54,8 +54,8 @@ def fib_dp2(n: int) -> int:
         return 0
 
     for i in range(2, n):
-        next = back1 + back2
+        _next = back1 + back2
         back2 = back1
-        back1 = next
+        back1 = _next
 
     return back1 + back2

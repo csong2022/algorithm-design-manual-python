@@ -19,11 +19,11 @@ BESTHEIGHT = 180  # best height in centimeters
 BESTWEIGHT = 75  # best weight in kilograms
 
 
-def read_suitors(input) -> list:
+def read_suitors(_input) -> list:
     suitors = []
 
     while True:
-        line = input.readline()
+        line = _input.readline()
         if not line:
             break
         values = line.split()

@@ -52,7 +52,7 @@ def hex_to_geo(xh: int, yh: int, r: float) -> tuple:
 
 def geo_to_hex(xg: float, yg: float, r: float) -> tuple:
     xh = (2.0 / sqrt(3)) * yg / (2.0 * r)
-    yh = (xg - (2.0 * r) * (xh) * (1.0 / 2.0)) / (2.0 * r)
+    yh = (xg - (2.0 * r) * xh * (1.0 / 2.0)) / (2.0 * r)
 
     return xh, yh
 

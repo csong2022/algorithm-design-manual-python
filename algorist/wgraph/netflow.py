@@ -46,8 +46,8 @@ class FlowGraph(Graph):
 
 
 class FlowEdgeReader:
-    def read_edge(self, input) -> tuple:
-        x, y, w = list(map(int, input.readline().split()))
+    def read_edge(self, _input) -> tuple:
+        x, y, w = list(map(int, _input.readline().split()))
         n = FlowEdgeNode(y, w)
         return x, n
 
@@ -56,13 +56,13 @@ class FlowGraphReader:
     def __init__(self):
         self.edge_reader = FlowEdgeReader()
 
-    def read_graph(self, input, directed: bool) -> Graph:
-        nvertices, nedges = list(map(int, input.readline().split()))
+    def read_graph(self, _input, directed: bool) -> FlowGraph:
+        nvertices, nedges = list(map(int, _input.readline().split()))
 
         g = FlowGraph(nvertices, directed)
 
         for i in range(nedges):
-            x, n = self.edge_reader.read_edge(input)
+            x, n = self.edge_reader.read_edge(_input)
             g.insert_edge(x, n, directed)
 
         return g
@@ -73,7 +73,7 @@ class NetflowCallback(GraphSearchCallback):
         return e.residual > 0
 
 
-def path_volume(g: Graph, start: int, end: int, parents: list) -> int:
+def path_volume(g: FlowGraph, start: int, end: int, parents: list) -> int:
     if parents[end] == -1:
         return 0
 
@@ -85,7 +85,7 @@ def path_volume(g: Graph, start: int, end: int, parents: list) -> int:
         return min(path_volume(g, start, parents[end], parents), e.residual)
 
 
-def augment_path(g: Graph, start: int, end: int, parents: list, volume: int) -> None:
+def augment_path(g: FlowGraph, start: int, end: int, parents: list, volume: int) -> None:
     if start == end:
         return
 
@@ -98,7 +98,7 @@ def augment_path(g: Graph, start: int, end: int, parents: list, volume: int) -> 
     augment_path(g, start, parents[end], parents, volume)
 
 
-def netflow(g: Graph, source: int, sink: int):
+def netflow(g: FlowGraph, source: int, sink: int):
     g.add_residual_edges()
 
     bfs = BFS(g)

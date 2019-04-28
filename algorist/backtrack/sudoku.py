@@ -34,10 +34,10 @@ class Board:
                 b.m[i][j] = a.m[i][j]
 
     @staticmethod
-    def read(input):
+    def read(_input):
         board = Board()
         for i in range(DIMENSION):
-            line = input.readline()
+            line = _input.readline()
             for j in range(DIMENSION):
                 value = Board.to_digit(line[j])
                 if value != 0:

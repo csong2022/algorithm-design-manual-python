@@ -17,10 +17,10 @@ class Paths(BacktrackCallback):
         self.g = g
         self.solutionCount = 0
 
-    def is_a_solution(self, a: int, k: int, t: int) -> bool:
+    def is_a_solution(self, a: list, k: int, t: int) -> bool:
         return a[k] == t
 
-    def process_solution(self, a: int, k: int, n: int) -> None:
+    def process_solution(self, a: list, k: int, n: int) -> None:
         self.solutionCount += 1
 
         print("{", end='')
@@ -28,7 +28,7 @@ class Paths(BacktrackCallback):
             print(" %d" % a[i], end='')
         print(' }')
 
-    def construct_candidates(self, a: int, k: int, n: int) -> tuple:
+    def construct_candidates(self, a: list, k: int, n: int) -> tuple:
         c = [0] * NMAX
 
         in_sol = [False] * NMAX  # what's already in the solution?

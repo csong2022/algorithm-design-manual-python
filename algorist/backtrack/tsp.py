@@ -29,12 +29,12 @@ class TspInstance:
         self.n = n  # how many points in problem?
 
     @staticmethod
-    def read(input):
-        n = int(input.readline()[:-1])
+    def read(_input):
+        n = int(_input.readline()[:-1])
         p = [Point(-1, -1)]
 
         for i in range(n):
-            _, x, y = list(map(int, input.readline().split()))
+            _, x, y = list(map(int, _input.readline().split()))
             p.append(Point(x, y))
 
         return TspInstance(p, n)
@@ -58,12 +58,12 @@ class TspSolution:
         return TspSolution(self.p[:], self.n)
 
     @staticmethod
-    def read(input):
-        n = int(input.readline()[:-1])
+    def read(_input):
+        n = int(_input.readline()[:-1])
         p = [-1]
 
         for i in range(n):
-            p.append(int(input.readline()[:-1]))
+            p.append(int(_input.readline()[:-1]))
 
         return TspSolution(p, n)
 

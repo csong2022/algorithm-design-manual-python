@@ -98,15 +98,15 @@ class Graph:
 
 
 class UnweightedEdgeReader:
-    def read_edge(self, input) -> tuple:
-        x, y = list(map(int, input.readline().split()))
+    def read_edge(self, _input) -> tuple:
+        x, y = list(map(int, _input.readline().split()))
         n = UnweightedEdgeNode(y)
         return x, n
 
 
 class WeightedEdgeReader:
-    def read_edge(self, input) -> tuple:
-        x, y, w = list(map(int, input.readline().split()))
+    def read_edge(self, _input) -> tuple:
+        x, y, w = list(map(int, _input.readline().split()))
         n = WeightedEdgeNode(y, w)
         return x, n
 
@@ -123,13 +123,13 @@ class GraphReader:
     def weighted():
         return GraphReader(WeightedEdgeReader())
 
-    def read_graph(self, input, directed: bool) -> Graph:
-        nvertices, nedges = list(map(int, input.readline().split()))
+    def read_graph(self, _input, directed: bool) -> Graph:
+        nvertices, nedges = list(map(int, _input.readline().split()))
 
         g = Graph(nvertices, directed)
 
         for i in range(nedges):
-            x, n = self.edge_reader.read_edge(input)
+            x, n = self.edge_reader.read_edge(_input)
             g.insert_edge(x, n, directed)
 
         return g
