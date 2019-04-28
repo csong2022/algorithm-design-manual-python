@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 A generic adjacency list graph data type.
@@ -7,6 +8,9 @@ Generify the edge node type, using List data structure as adjacent list.
 
 Implementation supports unweighted, weighted, and flow graph.
 """
+
+__author__ = "csong2022"
+
 from algorist.data_structure.linked_list import List
 
 

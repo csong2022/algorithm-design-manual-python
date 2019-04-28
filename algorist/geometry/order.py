@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Demonstrate traversal orders on a grid.
 
 Translate from order.c.
 """
+
+__author__ = "csong2022"
 
 
 def row_major(n: int, m: int) -> None:

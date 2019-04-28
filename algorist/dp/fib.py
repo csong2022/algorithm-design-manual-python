@@ -1,9 +1,14 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Fibonacci Numbers.
 
 Translate from fib.c.
 """
+
+__author__ = "csong2022"
+
+
 MAXN = 45  # largest n or m
 UNKNOWN = -1  # contents denote an empty cell
 

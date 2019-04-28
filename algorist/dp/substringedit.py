@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Approximately match one string as a substring of another, where is s in t?
 
 Generify from stringedit.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.dp.editdistance import Cell
 from algorist.dp.stringedit import StringEdit
 

@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Linked list-based container implementation.
 
 Translate from list-demo.c, list.h, item.h. Add iterator implementation.
 """
+
+__author__ = "csong2022"
 
 
 class Node:

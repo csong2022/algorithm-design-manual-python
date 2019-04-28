@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute the prime factorization of an integer.
 
 Translate from primes.c.
 """
+
+__author__ = "csong2022"
+
 from math import sqrt
 
 

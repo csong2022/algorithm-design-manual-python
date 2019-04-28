@@ -1,9 +1,14 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute Euclidian distances.
 
 Translate from distance.c.
 """
+
+__author__ = "csong2022"
+
+
 from math import sqrt
 
 

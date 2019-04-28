@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Triangulate a polygon via ear-clipping, and compute the area
@@ -5,6 +6,8 @@ of a polygon.
 
 Translate from triangulate.c.
 """
+
+__author__ = "csong2022"
 
 from algorist.geometry.geometry import Polygon, Triangulation, Triangle, cw, Point, triangle_area
 

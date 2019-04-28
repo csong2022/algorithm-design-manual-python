@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute the optimal alignment matching two strings.
 
 Translate from stringedit.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.dp.editdistance_cell import Cell, INSERT, DELETE
 
 

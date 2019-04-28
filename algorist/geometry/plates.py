@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute the number of circles in two different disk packings.
@@ -6,6 +7,8 @@ can we pack in there assuming we have w disks on the bottom?
 
 Translate from plates.c.
 """
+
+__author__ = "csong2022"
 
 from math import sqrt, floor, ceil
 

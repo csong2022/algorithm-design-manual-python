@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 A generic implementation of string comparison via dynamic programming.
 
 Translate from editdistance.h, editdistance.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.dp.editdistance_cell import MATCH, INSERT, DELETE, Cell
 from algorist.dp.stringedit import StringEdit
 

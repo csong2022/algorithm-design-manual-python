@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Identify strongly connected components in a graph.
 
 Translate from strong.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.data_structure.linked_stack import Stack
 from algorist.graph.bfs_dfs import EdgeType, DFS
 from algorist.graph.graph import GraphSearchCallback, Graph

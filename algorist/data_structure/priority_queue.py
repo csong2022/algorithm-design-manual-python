@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Implementation of a heap / priority queue abstract data type.
 
 Translate from priority_queue.h, priority_queue.c.
 """
+
+__author__ = "csong2022"
 
 
 class PriorityQueue:

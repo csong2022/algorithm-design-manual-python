@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Implementation of large integer arithmetic: addition, subtraction,
@@ -5,6 +6,8 @@ multiplication, and division.
 <p>
 Translate from bignum.c.
 """
+
+__author__ = "csong2022"
 
 import copy
 

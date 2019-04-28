@@ -1,7 +1,10 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute all-pairs shortest paths in weighted graphs.
 """
+
+__author__ = "csong2022"
 
 MAXINT = 100007
 

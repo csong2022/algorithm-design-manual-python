@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Implementation of a FIFO queue abstract data type.
 
 Translate from queue.h, queue.c. Implement with singly linked list. Add iterator implementation.
 """
+
+__author__ = "csong2022"
 
 
 class Node:

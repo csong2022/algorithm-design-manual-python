@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Longest common subsequence of two strings.
 
 Generify from lcs.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.dp.editdistance import EditDistance, MAXLEN
 
 

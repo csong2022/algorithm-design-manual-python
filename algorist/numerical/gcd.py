@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute the greatest common divisor of two integers.
 
 Translate from gcd.c.
 """
+
+__author__ = "csong2022"
+
 from math import floor
 
 

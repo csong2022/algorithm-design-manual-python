@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Optimally balance partitions using dynamic programming.
 
 Translate from partition.c.
 """
+
+__author__ = "csong2022"
+
 MAXINT = 100000  # infinity
 
 
