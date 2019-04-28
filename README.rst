@@ -7,6 +7,7 @@ Original C code <https://www3.cs.stonybrook.edu/~skiena/algorist/book/programs/>
 
 Chapter 3. Data Structures
 algorist.data_structure
+
 - linked_list.py --- linked implementation.
 - linked_stack.py --- Implementation of a LIFO stack abstract data type.
 - linked_queue.py --- implementation of a FIFO queue abstract data type.
@@ -17,11 +18,13 @@ algorist.data_structure
 
 Chapter 4. Sorting and Search
 algorist.sorting
+
 - sorting.py --- implementations of primary sorting algorithms
 - polly.py --- rank the desirability of suitors -- sorting example
 
 Chapter 5. Graph Traversal
 algorist.graph
+
 - graph.py -- graph data type
 - bfs_dfs.py --- generic implementation of breath/depth first search.
 - connected.py --- compute connected components of a graph
@@ -33,6 +36,7 @@ algorist.graph
 
 Chapter 6. Weighted Graph Algorithms
 algorist.wgraph
+
 - prim.py --- compute minimum spanning trees of graphs via Prim's algorithm
 - kruskal.py --- Compute minimum spanning trees of graphs via Kruskal's algorithm.
 - dijkstra.py --- compute shortest paths in weighted graphs
@@ -41,6 +45,7 @@ algorist.wgraph
 
 Chapter 7. Combinatorial Search and Heuristic Methods
 algorist.backtrack
+
 - backtrack.py --- a generic implementation of backtracking
 - subsets.py --- construct all subsets via backtracking
 - permutations.py --- construct all permutations via backtracking
@@ -52,6 +57,7 @@ algorist.backtrack
 
 Chapter 8. Dynamic Programming
 algorist.dp
+
 - fib.py --- Compute the binomial coefficients using dynamic programming
 - binomial.py --- compute the binomial coefficients using dynamic programming
 - stringedit.py --- compute the optimal alignment matching two strings
@@ -65,6 +71,7 @@ algorist.dp
 
 Chapter 13. Numerical Problems
 algorist.numerical
+
 - gcd.py --- compute the greatest common divisor of two integers
 - primes.py --- compute the prime factorization of an integer
 - bignum.py --- implementation of large integer arithmetic
@@ -72,6 +79,7 @@ algorist.numerical
 
 Chapter 17. Computational Geometry
 algorist.geometry
+
 - distance.py --- compute Euclidian distances
 - geometry.py --- basic geometric primitives and data types
 - geotest.py --- driver program for geometry routines
@@ -84,4 +92,5 @@ algorist.geometry
 
 Chapter 18. Set and String Problems
 algorist.string
+
 - name.py --- corporate name changing program -- string example
