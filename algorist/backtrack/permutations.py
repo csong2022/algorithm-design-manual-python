@@ -14,7 +14,7 @@ class Permutations(BacktrackCallback):
             print(' %d' % a[i], end='')
         print()
 
-    def construct_candidates(self, a: int, k: int, n: int) -> int:
+    def construct_candidates(self, a: int, k: int, n: int) -> tuple:
         in_perm = [False] * (n + 1)  # what is now in the permutation?
         c = [0] * (n + 1)
         for i in range(1, k):

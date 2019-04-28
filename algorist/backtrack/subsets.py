@@ -16,6 +16,6 @@ class Subsets(BacktrackCallback):
                 print(' %d' % i, end='')
         print(' }')
 
-    def construct_candidates(self, a: int, k: int, n: int) -> int:
+    def construct_candidates(self, a: int, k: int, n: int) -> tuple:
         c = [True, False]
         return c, len(c)

@@ -15,7 +15,7 @@ class NQueens(BacktrackCallback):
     def process_solution(self, a: int, k: int, n: int):
         self.solution_count += 1
 
-    def construct_candidates(self, a: int, k: int, n: int) -> int:
+    def construct_candidates(self, a: int, k: int, n: int) -> tuple:
         c = [0] * (n + 1)
 
         ncandidates = 0

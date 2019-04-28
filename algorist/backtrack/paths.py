@@ -22,7 +22,7 @@ class Paths(BacktrackCallback):
             print(" %d" % a[i], end='')
         print(' }')
 
-    def construct_candidates(self, a: int, k: int, n: int) -> int:
+    def construct_candidates(self, a: int, k: int, n: int) -> tuple:
         c = [0] * NMAX
 
         in_sol = [False] * NMAX  # what's already in the solution?
