@@ -5,7 +5,7 @@ class Node:
 
 
 class ListIterator:
-    def __init__(self, head):
+    def __init__(self, head: Node):
         self.current = head
 
     def __next__(self):
@@ -25,13 +25,13 @@ class List:
     def __init__(self):
         self.head = None
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.head is None
 
     def __contains__(self, x):
         return self.search(x) is not None
 
-    def search(self, x):
+    def search(self, x) -> Node:
         p = self.head
 
         while p is not None and p.item != x:
@@ -39,10 +39,10 @@ class List:
 
         return p
 
-    def insert(self, x):
+    def insert(self, x) -> None:
         self.head = Node(x, self.head)
 
-    def delete(self, x):
+    def delete(self, x) -> None:
         pred = None
         p = self.head
 
@@ -60,7 +60,7 @@ class List:
     def __iter__(self):
         return ListIterator(self.head)
 
-    def print(self):
+    def print(self) -> None:
         for x in self:
             print(x, end=' '),
         print()

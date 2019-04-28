@@ -2,30 +2,30 @@ from algorist.data_structure.linked_list import List
 
 
 class UnweightedEdgeNode:
-    def __init__(self, y):
+    def __init__(self, y: int):
         self.y = y  # adjancency info
 
-    def copy(self, v):
+    def copy(self, v: int):
         return UnweightedEdgeNode(v)
 
 
 class WeightedEdgeNode:
-    def __init__(self, y, weight):
+    def __init__(self, y: int, weight):
         self.y = y  # adjancency info
         self.weight = weight  # edge weight
 
-    def copy(self, v):
+    def copy(self, v: int):
         return WeightedEdgeNode(v, self.weight)
 
 
 class GraphSearchCallback:
-    def process_vertex_early(self, v):
+    def process_vertex_early(self, v: int) -> None:
         pass
 
-    def process_vertex_late(self, v):
+    def process_vertex_late(self, v: int) -> None:
         pass
 
-    def process_edge(self, x, y):
+    def process_edge(self, x: int, y: int) -> None:
         pass
 
     def valid_edge(self, e):
@@ -37,7 +37,7 @@ class Graph:
     A generic adjacency list graph data type.
     """
 
-    def __init__(self, nvertices, directed):
+    def __init__(self, nvertices: int, directed: bool):
         self.edges = [List() for i in range(nvertices + 1)]  # adjacency info
         self.degree = [0] * (nvertices + 1)  # outdegree of each vertex
 
@@ -45,16 +45,16 @@ class Graph:
         self.nedges = 0  # number of edges in the graph
         self.directed = directed  # is the graph directed?
 
-    def find_edge(self, x, y):
+    def find_edge(self, x: int, y: int):
         self.validate_vertex(x)
         self.validate_vertex(y)
         return next((p for p in self.edges[x] if p.y == y), None)
 
-    def validate_vertex(self, v):
+    def validate_vertex(self, v: int):
         if v < 1 or v > self.nvertices:
             raise IndexError('Invalid vertex %d' % v)
 
-    def insert_edge(self, x, n, directed):
+    def insert_edge(self, x: int, n, directed: bool) -> None:
         self.validate_vertex(x)
         self.validate_vertex(n.y)
 
@@ -66,7 +66,7 @@ class Graph:
         else:
             self.nedges += 1
 
-    def delete_edge(self, x, y, directed):
+    def delete_edge(self, x: int, y: int, directed: bool) -> None:
         self.validate_vertex(x)
         self.validate_vertex(y)
 
@@ -82,7 +82,7 @@ class Graph:
         else:
             print("Warning: deletion(%d,%d) not found in g" % (x, y))
 
-    def print(self):
+    def print(self) -> None:
         for i in range(1, self.nvertices + 1):
             print("%d: " % i, end='')
 
@@ -92,14 +92,14 @@ class Graph:
 
 
 class UnweightedEdgeReader:
-    def read_edge(self, input):
+    def read_edge(self, input) -> tuple:
         x, y = list(map(int, input.readline().split()))
         n = UnweightedEdgeNode(y)
         return x, n
 
 
 class WeightedEdgeReader:
-    def read_edge(self, input):
+    def read_edge(self, input) -> tuple:
         x, y, w = list(map(int, input.readline().split()))
         n = WeightedEdgeNode(y, w)
         return x, n
@@ -117,7 +117,7 @@ class GraphReader:
     def weighted():
         return GraphReader(WeightedEdgeReader())
 
-    def read_graph(self, input, directed):
+    def read_graph(self, input, directed: bool) -> Graph:
         nvertices, nedges = list(map(int, input.readline().split()))
 
         g = Graph(nvertices, directed)

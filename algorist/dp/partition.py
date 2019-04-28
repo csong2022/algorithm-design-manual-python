@@ -10,14 +10,14 @@ def read_partition(input):
     return s, n, k
 
 
-def print_books(s, start, end):
+def print_books(s: list, start: int, end: int) -> None:
     print("{", end='')
     for i in range(start, end + 1):
         print(" %d " % s[i], end='')
     print('}')
 
 
-def print_matrix(m, n, k):
+def print_matrix(m: list, n: int, k: int) -> None:
     print()
     for i in range(1, n + 1):
         for j in range(1, k + 1):
@@ -25,7 +25,7 @@ def print_matrix(m, n, k):
         print()
 
 
-def reconstruct_partition(s, d, n, k):
+def reconstruct_partition(s: list, d: list, n: int, k: int) -> None:
     if k == 1:
         print_books(s, 1, n)
     else:
@@ -33,7 +33,7 @@ def reconstruct_partition(s, d, n, k):
         print_books(s, d[n][k] + 1, n)
 
 
-def partition(s, n, k):
+def partition(s: list, n: int, k: int) -> None:
     p = [0] * (n + 1)  # prefix sums array
     m = [[0] * (k + 1) for i in range(n + 1)]  # DP table for values
     d = [[0] * (k + 1) for i in range(n + 1)]  # DP table for dividers

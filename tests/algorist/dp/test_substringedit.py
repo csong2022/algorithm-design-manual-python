@@ -1,7 +1,6 @@
 from unittest import TestCase
 
 from algorist.dp.editdistance import EditDistance
-from algorist.dp.stringedit import StringEdit
 from algorist.dp.substringedit import SubStringEdit
 from tests.algorist.test.test_engine import execute
 

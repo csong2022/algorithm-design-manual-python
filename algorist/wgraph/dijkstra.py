@@ -1,7 +1,9 @@
+from algorist.graph.graph import Graph
+
 MAXINT = 100007;
 
 
-def dijkstra(g, start):
+def dijkstra(g: Graph, start: int) -> list:
     """
     Compute shortest paths in weighted graphs using Dijkstra's algorithm
 

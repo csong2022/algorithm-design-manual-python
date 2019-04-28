@@ -8,13 +8,13 @@ class SetUnion:
         self.p = list(range(0, n + 1))  # parent element
         self.size = [1] * (n + 1)  # number of elements in set
 
-    def find(self, x):
+    def find(self, x: int) -> int:
         if self.p[x] == x:
             return x
         else:
             return self.find(self.p[x])
 
-    def union_sets(self, s1, s2):
+    def union_sets(self, s1: int, s2: int) -> None:
         r1 = self.find(s1)
         r2 = self.find(s2)
 
@@ -29,9 +29,9 @@ class SetUnion:
             self.size[r2] += self.size[r1]
             self.p[r1] = r2
 
-    def same_component(self, s1, s2):
+    def same_component(self, s1: int, s2: int) -> bool:
         return self.find(s1) == self.find(s2)
 
-    def print(self):
+    def print(self) -> None:
         for i in range(1, self.n + 1):
             print("%i  set=%d size=%d " % (i, self.p[i], self.size[i]))

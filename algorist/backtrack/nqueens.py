@@ -9,13 +9,13 @@ class NQueens(BacktrackCallback):
     def __init__(self):
         self.solution_count = 0  # how many solutions are there?
 
-    def is_a_solution(self, a, k, n):
+    def is_a_solution(self, a: int, k: int, n: int) -> bool:
         return k == n
 
-    def process_solution(self, a, k, n):
+    def process_solution(self, a: int, k: int, n: int):
         self.solution_count += 1
 
-    def construct_candidates(self, a, k, n):
+    def construct_candidates(self, a: int, k: int, n: int) -> int:
         c = [0] * (n + 1)
 
         ncandidates = 0

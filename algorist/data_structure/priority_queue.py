@@ -7,13 +7,13 @@ class PriorityQueue:
         self.q = [None]  # body of queue
         self.n = 0  # number of queue elements
 
-    def _parent(self, n):
+    def _parent(self, n: int) -> int:
         return -1 if n == 1 else int(n / 2)
 
-    def _young_child(self, n):
+    def _young_child(self, n: int) -> int:
         return 2 * n
 
-    def bubble_up(self, p):
+    def bubble_up(self, p: int) -> None:
         parent = self._parent(p)
         if parent == -1:  # at root of heap, no parent
             return
@@ -22,7 +22,7 @@ class PriorityQueue:
             self.swap(p, parent)
             self.bubble_up(parent)
 
-    def bubble_down(self, p):
+    def bubble_down(self, p: int) -> None:
         c = self._young_child(p)  # child index
         min_index = p
 
@@ -35,7 +35,7 @@ class PriorityQueue:
             self.swap(p, min_index)
             self.bubble_down(min_index)
 
-    def insert(self, x):
+    def insert(self, x) -> None:
         self.q.append(x)
         self.n += 1
         self.bubble_up(self.n)
@@ -55,21 +55,21 @@ class PriorityQueue:
 
         return min
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.n == 0
 
-    def swap(self, i, j):
+    def swap(self, i, j) -> None:
         if i != j:
             self.q[i], self.q[j] = self.q[j], self.q[i]
 
-    def print(self):
+    def print(self) -> None:
         print(self.q[1: self.n], end=' ')
 
     def __len__(self):
         return self.n
 
     @staticmethod
-    def make_heap(s, n):
+    def make_heap(s: list, n: int):
         q = PriorityQueue()
 
         for i in range(0, n):
@@ -83,7 +83,7 @@ class PriorityQueue:
         return q
 
     @staticmethod
-    def make_heap1(s, n):
+    def make_heap1(s: list, n: int):
         q = PriorityQueue()
 
         for i in range(0, n):

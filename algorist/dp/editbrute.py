@@ -1,4 +1,6 @@
-from algorist.dp.editdistance import EditDistance, MATCH, INSERT, DELETE, Cell
+from algorist.dp.editdistance_cell import MATCH, INSERT, DELETE, Cell
+from algorist.dp.editdistance import EditDistance
+from algorist.dp.stringedit import StringEdit
 
 
 class EditBrute(EditDistance):
@@ -6,10 +8,10 @@ class EditBrute(EditDistance):
     Compute string edit distance *without* dynamic programming!
     """
 
-    def __init__(self, string_edit):
+    def __init__(self, string_edit: StringEdit):
         super().__init__(string_edit)
 
-    def string_compare2(self, s, t, i, j):
+    def string_compare2(self, s: str, t: str, i: int, j: int) -> int:
         opt = [0] * 3  # cost of the three options
 
         if i == 0: return j * self.string_edit.indel(' ')

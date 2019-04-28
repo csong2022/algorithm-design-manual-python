@@ -8,7 +8,7 @@ class Elevator:
     Elevator stop optimization via dynamic programming.
     """
 
-    def __init__(self, stops, nstops):
+    def __init__(self, stops: list, nstops: int):
         self.nriders = len(stops) - 1
         self.nstops = nstops
         self.stops = stops
@@ -37,7 +37,7 @@ class Elevator:
 
         return laststop
 
-    def floors_walked(self, previous, current):
+    def floors_walked(self, previous: int, current: int) -> int:
         nsteps = 0  # total distance traveled
 
         for i in range(1, self.nriders + 1):
@@ -46,13 +46,13 @@ class Elevator:
 
         return nsteps
 
-    def reconstruct_path(self, lastfloor, stops_to_go):
+    def reconstruct_path(self, lastfloor: int, stops_to_go: int) -> None:
         if stops_to_go > 1:
             self.reconstruct_path(self.p[lastfloor][stops_to_go], stops_to_go - 1)
 
         print("%d" % lastfloor)
 
-    def print_matrix(self, m):
+    def print_matrix(self, m: list) -> None:
         for j in range(self.nstops + 1):
             for i in range(NFLOORS + 1):
                 print("%3d" % m[i][j], end='')

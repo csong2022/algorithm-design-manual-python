@@ -1,15 +1,7 @@
-import sys
+from algorist.dp.editdistance_cell import MATCH, INSERT, DELETE, Cell
+from algorist.dp.stringedit import StringEdit
 
 MAXLEN = 101  # longest possible string
-MATCH = 0  # enumerated type symbol for match
-INSERT = 1  # enumerated type symbol for insert
-DELETE = 2  # enumerated type symbol for delete
-
-
-class Cell:
-    def __init__(self, cost, parent):
-        self.cost = cost  # cost of reaching this cell *
-        self.parent = parent  # parent cell
 
 
 class EditDistance:
@@ -17,12 +9,12 @@ class EditDistance:
      A generic implementation of string comparison via dynamic programming.
     """
 
-    def __init__(self, string_edit):
+    def __init__(self, string_edit: StringEdit):
         self.string_edit = string_edit
         # dynamic programming table
         self.m = [[Cell(0, -1) for j in range(MAXLEN + 1)] for i in range(MAXLEN + 1)]
 
-    def string_compare(self, s, t):
+    def string_compare(self, s: str, t: str) -> int:
         for j in range(len(t)):
             self.string_edit.row_init(j, self.m)
 
@@ -45,7 +37,7 @@ class EditDistance:
         i, j = self.string_edit.goal_cell(s, t, self.m)
         return self.m[i][j].cost
 
-    def reconstruct_path(self, s, t, i, j):
+    def reconstruct_path(self, s: str, t: str, i: int, j: int) -> None:
         # print("trace (%d,%d)" % (i, j), file=sys.stderr)
         if i < 0 or j < 0 or self.m[i][j].parent == -1:
             return
@@ -62,7 +54,7 @@ class EditDistance:
             self.reconstruct_path(s, t, i - 1, j)
             self.string_edit.delete_out(s, i)
 
-    def print_matrix(self, s, t, costQ):
+    def print_matrix(self, s: str, t: str, costQ: bool) -> None:
         x = len(s)
         y = len(t)
 

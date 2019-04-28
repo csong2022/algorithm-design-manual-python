@@ -3,7 +3,7 @@ class BacktrackCallback:
     Back track callback API.
     """
 
-    def is_a_solution(self, a, k, input):
+    def is_a_solution(self, a: list, k: int, input) -> bool:
         """
          Test the first k elements of vector a are a complete solution for the given problem.
 
@@ -14,7 +14,7 @@ class BacktrackCallback:
         """
         return False
 
-    def process_solution(self, a, k, input):
+    def process_solution(self, a: list, k: int, input) -> None:
         """
         Process a complete solution once it is constructed.
 
@@ -25,7 +25,7 @@ class BacktrackCallback:
         """
         pass
 
-    def construct_candidates(self, a, k, input):
+    def construct_candidates(self, a: list, k: int, input) -> int:
         """
         Fills an array c with the complete set of possible candidates for the kth position of a,
         given the contents of the first k - 1 positions.
@@ -37,7 +37,7 @@ class BacktrackCallback:
         """
         return 0
 
-    def make_move(self, a, k, input):
+    def make_move(self, a: list, k: int, input) -> None:
         """
         Make a move based on updated kth position of a.
 
@@ -48,7 +48,7 @@ class BacktrackCallback:
         """
         pass
 
-    def unmake_move(self, a, k, input):
+    def unmake_move(self, a: list, k: int, input) -> None:
         """
         Undo the move based on updated kth position of a.
 
@@ -72,7 +72,7 @@ class Backtrack:
     def __init__(self):
         self.finished = False  # found all solutions yet?
 
-    def backtrack(self, a, k, input, callback):
+    def backtrack(self, a: list, k: int, input, callback: BacktrackCallback) -> None:
         if callback.is_a_solution(a, k, input):
             callback.process_solution(a, k, input)
         else:

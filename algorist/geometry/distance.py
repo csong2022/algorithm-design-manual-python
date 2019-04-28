@@ -1,7 +1,7 @@
 from math import sqrt
 
 
-def distance(a, b):
+def distance(a: list, b: list) -> float:
     """
     Compute Euclidian distances
 

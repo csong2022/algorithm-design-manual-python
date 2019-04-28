@@ -1,7 +1,7 @@
 from enum import Enum
 
 from algorist.graph.bfs_dfs import BFS
-from algorist.graph.graph import GraphSearchCallback
+from algorist.graph.graph import GraphSearchCallback, Graph
 
 
 class Color(Enum):
@@ -10,7 +10,7 @@ class Color(Enum):
     BLACK = 2  # black vertex
 
 
-def complement(color):
+def complement(color: Color) -> Color:
     if color == Color.WHITE:
         return Color.BLACK
     elif color == Color.BLACK:
@@ -20,7 +20,7 @@ def complement(color):
 
 
 class Bipartite:
-    def __init__(self, g):
+    def __init__(self, g: Graph):
         self.color = [Color.UNCOLORED] * (g.nvertices + 1)  # assigned color of v
         self.bipartite = True  # is the graph bipartite?
 
@@ -38,7 +38,7 @@ class BipartiteCallback(GraphSearchCallback):
     def __init__(self, bipartite):
         self.bipartite = bipartite
 
-    def process_edge(self, x, y):
+    def process_edge(self, x: int, y: int) -> None:
         if self.bipartite.color[x] == self.bipartite.color[y]:
             self.bipartite.bipartite = False
             print("Warning: graph not bipartite, due to (%d,%d)" % (x, y))

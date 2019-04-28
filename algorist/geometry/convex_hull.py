@@ -1,9 +1,13 @@
+import types
 from functools import cmp_to_key
 
-from algorist.geometry.geometry import collinear, distance, ccw, Polygon, cw
+from algorist.geometry.geometry import collinear, distance, ccw, Polygon, cw, Point
 
 
-def convex_hull(_in, n):
+# Compute convex hulls of points in the plane using the
+# Gries/Graham scan algorithm.
+
+def convex_hull(_in: list, n: int) -> Polygon:
     if n <= 3:  # all points on hull!
         return Polygon(_in, n)
 
@@ -37,7 +41,7 @@ def convex_hull(_in, n):
     return Polygon(points, top)
 
 
-def sort_and_remove_duplicates(points, n):
+def sort_and_remove_duplicates(points: list, n: int) -> int:
     points[0: n] = sorted(points[0: n], key=cmp_to_key(leftlower))
     oldn = n  # number of points before deletion
     hole = 1  # index marked for potential deletion
@@ -53,7 +57,7 @@ def sort_and_remove_duplicates(points, n):
     return n
 
 
-def leftlower(p1, p2):
+def leftlower(p1: Point, p2: Point) -> int:
     if p1.x < p2.x:
         return -1
     if p1.x > p2.x:
@@ -67,8 +71,8 @@ def leftlower(p1, p2):
     return 0
 
 
-def smaller_angle(first_point):
-    def _smaller_angle(p1, p2):
+def smaller_angle(first_point: Point) -> types.FunctionType:
+    def _smaller_angle(p1: Point, p2: Point) -> bool:
         if collinear(first_point, p1, p2):
             if distance(first_point, p1) <= distance(first_point, p2):
                 return -1

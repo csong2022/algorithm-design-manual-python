@@ -11,7 +11,7 @@ Basic geometric primitives and data types -- Lines, Circles, Segments
 
 
 class Point:
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         self.x = x  # x-coordinat
         self.y = y  # y-coordinate
 
@@ -25,11 +25,11 @@ class Point:
         """Overrides the default implementation (unnecessary in Python 3)"""
         return not self.__eq__(other)
 
-    def print(self):
+    def print(self) -> None:
         print("%7.3lf %7.3lf" % (self.x, self.y))
 
     @staticmethod
-    def print_points(p, n):
+    def print_points(p: list, n: int) -> None:
         for i in range(n):
             print(str(p[i]))
 
@@ -38,12 +38,12 @@ class Point:
 
 
 class Line:
-    def __init__(self, a, b, c):
+    def __init__(self, a: float, b: float, c: float):
         self.a = a  # x-coefficient
         self.b = b  # y-coefficient
         self.c = c  # constant term
 
-    def print(self):
+    def print(self) -> None:
         print(str(self))
 
     def __str__(self):
@@ -51,45 +51,58 @@ class Line:
 
 
 class Segment:
-    def __init__(self, p1, p2):
+    def __init__(self, p1: Point, p2: Point):
         self.p1 = p1  # endpoints of line segment
         self.p2 = p2
 
-    def print(self):
+    def print(self) -> None:
         print("segment: ", end='')
         self.p1.print()
         self.p2.print()
 
 
 class Polygon:
-    def __init__(self, p, n):
+    def __init__(self, p: list, n: int):
         self.p = p  # array of points in polygon
         self.n = n  # number of points in polygon
 
-    def print(self):
+    def print(self) -> None:
         Point.print_points(self.p, self.n)
 
 
 class Triangle:
-    def __init__(self, a, b, c):
+    def __init__(self, a: Point, b: Point, c: Point):
         self.a = a  # point a
         self.b = b  # point b
         self.c = c  # point c
 
 
 class Triangulation:
-    def __init__(self, t, n):
+    def __init__(self, t: list, n: int):
         self.t = t  # indicies of vertices in triangulation
         self.n = n  # number of triangles in triangulation
 
+    def add_triangle(self, i: int, j: int, k: int) -> None:
+        self.t.append([i, j, k])
+        self.n += 1
+
+    def print(self) -> None:
+        for i in range(self.n):
+            for j in range(3):
+                print(" %d " % self.t[i][j], end='')
+            print()
+
 
 class Circle:
-    def __init__(self, c, r):
+    def __init__(self, c: Point, r: float):
         self.c = c  # center of circle
         self.r = r  # radius of circle
 
+    def print(self):
+        print("%7.3lf %7.3lf %7.3lf" % (self.c.x, self.c.y, self.r))
 
-def points_to_line(p1, p2):
+
+def points_to_line(p1: Point, p2: Point) -> Line:
     if p1.x == p2.x:
         a = 1
         b = 0
@@ -102,22 +115,22 @@ def points_to_line(p1, p2):
     return Line(a, b, c)
 
 
-def point_and_slope_to_line(p, m):
+def point_and_slope_to_line(p: Point, m: float) -> Line:
     a = -m
     b = 1
     c = -(a * p.x + b * p.y)
     return Line(a, b, c)
 
 
-def parallelQ(l1, l2):
+def parallelQ(l1: Line, l2: Line) -> bool:
     return abs(l1.a - l2.a) <= EPSILON and abs(l1.b - l2.b) <= EPSILON
 
 
-def same_lineQ(l1, l2):
+def same_lineQ(l1: Line, l2: Line) -> bool:
     return parallelQ(l1, l2) and abs(l1.c - l2.c) <= EPSILON
 
 
-def intersection_point(l1, l2):
+def intersection_point(l1: Line, l2: Line) -> bool:
     if same_lineQ(l1, l2):
         print("Warning: Identical lines, all points intersect.")
         return Point(0.0, 0.0)
@@ -136,7 +149,7 @@ def intersection_point(l1, l2):
     return Point(x, y)
 
 
-def closest_point(p_in, l):
+def closest_point(p_in: Point, l: Line) -> Point:
     if abs(l.b) <= EPSILON:  # vertical line
         x = -l.c
         y = p_in.y
@@ -152,38 +165,38 @@ def closest_point(p_in, l):
     return intersection_point(l, perp)
 
 
-def distance(a, b):
+def distance(a: Point, b: Point) -> float:
     d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
 
     return sqrt(d)
 
 
-def copy_point(a, b):
+def copy_point(a: Point, b: Point) -> None:
     b.x = a.x
     b.y = a.y
 
 
-def swap_point(a, b):
+def swap_point(a: Point, b: Point) -> None:
     c = Point(0, 0)
     copy_point(a, c)
     copy_point(b, a)
     copy_point(c, b)
 
 
-def points_to_segment(a, b):
+def points_to_segment(a: Point, b: Point) -> Segment:
     return Segment(a, b)
 
 
-def segment_to_points(s):
+def segment_to_points(s: Segment) -> tuple:
     return s.p1, s.p2
 
 
-def point_in_box(p, b1, b2):
+def point_in_box(p: Point, b1: Point, b2: Point) -> bool:
     return min(b1.x, b2.x) <= p.x <= max(b1.x, b2.x) and \
            min(b1.y, b2.y) <= p.y <= max(b1.y, b2.y)
 
 
-def segments_intersect(s1, s2):
+def segments_intersect(s1: Segment, s2: Segment) -> bool:
     l1 = points_to_line(s1.p1, s1.p2)
     l2 = points_to_line(s2.p1, s2.p2)
 
@@ -201,27 +214,27 @@ def segments_intersect(s1, s2):
     return point_in_box(p, s1.p1, s1.p2) and point_in_box(p, s2.p1, s2.p2)
 
 
-def signed_triangle_area(a, b, c):
+def signed_triangle_area(a: Point, b: Point, c: Point) -> float:
     return (a.x * b.y - a.y * b.x + a.y * c.x - a.x * c.y + b.x * c.y - c.x * b.y) / 2.0
 
 
-def triangle_area(a, b, c):
+def triangle_area(a: Point, b: Point, c: Point) -> float:
     return abs(signed_triangle_area(a, b, c))
 
 
-def ccw(a, b, c):
+def ccw(a: Point, b: Point, c: Point) -> bool:
     return signed_triangle_area(a, b, c) > EPSILON
 
 
-def cw(a, b, c):
+def cw(a: Point, b: Point, c: Point) -> bool:
     return signed_triangle_area(a, b, c) < -EPSILON
 
 
-def collinear(a, b, c):
+def collinear(a: Point, b: Point, c: Point) -> bool:
     return abs(signed_triangle_area(a, b, c)) <= EPSILON
 
 
-def read_point(input):
+def read_point(input) -> Point:
     line = input.readline()
     if not line:
         return None
@@ -230,7 +243,7 @@ def read_point(input):
         return Point(x, y)
 
 
-def read_points(input):
+def read_points(input) -> list:
     n = int(input.readline()[:-1])  # number of points
 
     p = []
@@ -238,3 +251,9 @@ def read_points(input):
         p.append(read_point(input))
 
     return p
+
+
+def read_circle(input) -> Circle:
+    line = input.readline()
+    x, y, r = list(map(float, line.split()))
+    return Circle(Point(x, y), r)

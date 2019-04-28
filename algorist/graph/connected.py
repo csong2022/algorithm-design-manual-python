@@ -1,13 +1,13 @@
 from algorist.graph.bfs_dfs import BFS
-from algorist.graph.graph import GraphSearchCallback
+from algorist.graph.graph import GraphSearchCallback, Graph
 
 
 class ConnectedCallback(GraphSearchCallback):
-    def process_vertex_early(self, v):
+    def process_vertex_early(self, v: int) -> None:
         print(" %d" % v, end='')
 
 
-def connected_components(g):
+def connected_components(g: Graph):
     bfs = BFS(g)
     callback = ConnectedCallback()
 

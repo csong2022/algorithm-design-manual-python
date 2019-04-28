@@ -1,4 +1,4 @@
-def binomial_coefficient(n, m):
+def binomial_coefficient(n: int, m: int) -> list:
     """
     Compute the binomial coefficients using dynamic programming.
 

@@ -1,21 +1,22 @@
 MAXN = 45  # largest n or m
 UNKNOWN = -1  # contents denote an empty cell
 
-def fib_r(n):
+
+def fib_r(n: int) -> int:
     if n == 0: return 0
     if n == 1: return 1
 
     return fib_r(n - 1) + fib_r(n - 2)
 
 
-def fib_c(n, f):
+def fib_c(n: int, f: list) -> int:
     if f[n] == UNKNOWN:
         f[n] = fib_c(n - 1, f) + fib_c(n - 2, f)
 
     return f[n]
 
 
-def fib_c_driver(n):
+def fib_c_driver(n: int) -> int:
     f = [UNKNOWN] * (MAXN + 1)
     f[0] = 0
     f[1] = 1
@@ -26,7 +27,7 @@ def fib_c_driver(n):
     return fib_c(n, f)
 
 
-def fib_dp(n):
+def fib_dp(n: int) -> int:
     f = [UNKNOWN] * (MAXN + 1)
     f[0] = 0
     f[1] = 1
@@ -37,7 +38,7 @@ def fib_dp(n):
     return f[n]
 
 
-def fib_dp2(n):
+def fib_dp2(n: int) -> int:
     back1 = 1  # last two values of f[n]
     back2 = 0
 
