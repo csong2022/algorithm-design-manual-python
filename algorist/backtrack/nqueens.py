@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Solve the eight queens problem using backtracking.
 
 Translate from 8-queens.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.backtrack.backtrack import BacktrackCallback
 
 

@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 A generic backtracking implementation.
 
 Translate from backtrack.h, backtrack.c.
 """
+
+__author__ = "csong2022"
 
 
 class BacktrackCallback:
