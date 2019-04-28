@@ -1,7 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Implementation of a heap / priority queue abstract data type.
+
+Translate from priority_queue.h, priority_queue.c.
+"""
+
+
 class PriorityQueue:
-    """
-    Implementation of a heap / priority queue abstract data type.
-    """
 
     def __init__(self):
         self.q = [None]  # body of queue

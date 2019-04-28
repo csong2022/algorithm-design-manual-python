@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Implementation of a LIFO stack abstract data type.
+
+Translate from stack.h, stack.c. Add iterator implementation.
+*"""
+
+
 class Node:
     def __init__(self, item, next=None):
         self.item = item  # data item

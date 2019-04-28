@@ -1,6 +1,12 @@
-# Compute the number of circles in two different disk packings.
-# 	Assuming we have an $w \times l$ box, how many unit disks
-# 	can we pack in there assumming we have w disks on the bottom?
+# -*- coding: utf-8 -*-
+"""
+Compute the number of circles in two different disk packings.
+Assuming we have an $w \times l$ box, how many unit disks
+can we pack in there assumming we have w disks on the bottom?
+
+Translate from plates.c.
+"""
+
 from math import sqrt, floor, ceil
 
 

@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute convex hulls of points in the plane using the Gries/Graham scan algorithm.
+
+Translate from convex-hull.c.
+"""
 import types
 from functools import cmp_to_key
 

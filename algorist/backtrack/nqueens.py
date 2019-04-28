@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Solve the eight queens problem using backtracking.
+
+Translate from 8-queens.c.
+"""
 from algorist.backtrack.backtrack import BacktrackCallback
 
 

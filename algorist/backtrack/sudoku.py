@@ -1,4 +1,9 @@
-# A backtracking program to solve Sudoku
+# -*- coding: utf-8 -*-
+"""
+A backtracking program to solve Sudoku.
+
+Translate from sudoku.c.
+"""
 from algorist.backtrack.backtrack import BacktrackCallback, Backtrack
 
 BASED = 3  # base dimension, 3*3 blocks

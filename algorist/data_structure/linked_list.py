@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Linked list-based container implementation.
+
+Translate from list-demo.c, list.h, item.h. Add iterator implementation.
+"""
+
+
 class Node:
     def __init__(self, item, next=None):
         self.item = item  # data item
@@ -18,10 +26,6 @@ class ListIterator:
 
 
 class List:
-    """
-    Linked list-based container implementation.
-    """
-
     def __init__(self):
         self.head = None
 

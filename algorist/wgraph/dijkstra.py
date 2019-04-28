@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Compute shortest paths in weighted graphs using Dijkstra's algorithm.
+"""
 from algorist.graph.graph import Graph
 
 MAXINT = 100007;

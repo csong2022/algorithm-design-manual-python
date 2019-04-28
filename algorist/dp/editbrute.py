@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute string edit distance *without* dynamic programming!
+
+Translate from editbrute.c.
+"""
 from algorist.dp.editdistance_cell import MATCH, INSERT, DELETE, Cell
 from algorist.dp.editdistance import EditDistance
 from algorist.dp.stringedit import StringEdit

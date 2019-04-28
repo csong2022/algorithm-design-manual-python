@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Two color a bipartite graph
+
+Translate from bipartite.c.
+"""
 from enum import Enum
 
 from algorist.graph.bfs_dfs import BFS

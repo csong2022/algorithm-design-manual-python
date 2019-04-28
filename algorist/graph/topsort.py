@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Topologically sort a directed acyclic graph (DAG)
+
+Translate from topsort.c.
+"""
 from algorist.data_structure.linked_queue import Queue
 from algorist.graph.graph import Graph
 

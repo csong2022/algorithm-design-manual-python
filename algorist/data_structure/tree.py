@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Binary search tree container implementation.
+
+Translate from tree.h, tree-demo.c.
+"""
+
+
 class Node:
     def __init__(self, item, parent):
         self.item = item  # data item
@@ -7,9 +15,6 @@ class Node:
 
 
 class Tree:
-    """
-    Binary search tree container implementation.
-    """
 
     def __init__(self):
         self.root = None

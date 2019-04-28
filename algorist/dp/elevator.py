@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Elevator stop optimization via dynamic programming.
+
+Translate from elevator.c.
+"""
 MAX_RIDERS = 50  # what is the capacity of the elevator?
 NFLOORS = 25  # the height of the building in floors
 MAXINT = 100007

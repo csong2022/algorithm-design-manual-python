@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+A generic adjacency list graph data type.
+
+Translate from graph.h, graph.c, include functionalities in wgraph.h, wgraph.c.
+Generify the edge node type, using List data structure as adjacent list.
+
+Implementation supports unweighted, weighted, and flow graph.
+"""
 from algorist.data_structure.linked_list import List
 
 
@@ -33,9 +42,6 @@ class GraphSearchCallback:
 
 
 class Graph:
-    """
-    A generic adjacency list graph data type.
-    """
 
     def __init__(self, nvertices: int, directed: bool):
         self.edges = [List() for i in range(nvertices + 1)]  # adjacency info

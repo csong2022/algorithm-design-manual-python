@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Sorting algorithms.
+
+Translate from sorting.c.
+"""
 from algorist.data_structure.priority_queue import PriorityQueue
 
 

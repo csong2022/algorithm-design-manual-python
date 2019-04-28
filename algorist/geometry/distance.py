@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute Euclidian distances.
+
+Translate from distance.c.
+"""
 from math import sqrt
 
 

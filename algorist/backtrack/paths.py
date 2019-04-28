@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Enumerate the paths in a graph via backtracking.
+
+Translate from paths.c.
+"""
 from algorist.backtrack.backtrack import BacktrackCallback, NMAX
 from algorist.graph.graph import Graph
 

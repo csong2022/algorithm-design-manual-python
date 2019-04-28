@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+A generic backtracking implementation.
+
+Translate from backtrack.h, backtrack.c.
+"""
 class BacktrackCallback:
     """
     Back track callback API.

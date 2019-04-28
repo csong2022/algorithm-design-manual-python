@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Compute minimum spanning trees of graphs via Dijkstra/Prim's algorithm.
+"""
 from algorist.graph.graph import Graph
 
 MAXINT = 100007;

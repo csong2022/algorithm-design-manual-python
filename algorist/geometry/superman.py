@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute Superman's flight path -- geometry example
+
+Translate from superman.c.
+"""
 from math import sqrt, acos
 
 from algorist.geometry.geometry import points_to_line, closest_point, distance, point_in_box, Point

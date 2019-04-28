@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Compute minimum spanning trees of graphs via Kruskal's algorithm.
+"""
 from algorist.data_structure.set_union import SetUnion
 from algorist.graph.graph import Graph
 

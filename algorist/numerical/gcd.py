@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute the greatest common divisor of two integers.
+
+Translate from gcd.c.
+"""
 from math import floor
 
 

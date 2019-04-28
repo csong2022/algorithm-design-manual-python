@@ -1,4 +1,9 @@
-# Demonstrate traversal orders on a grid.
+# -*- coding: utf-8 -*-
+"""
+Demonstrate traversal orders on a grid.
+
+Translate from order.c.
+"""
 
 
 def row_major(n: int, m: int) -> None:

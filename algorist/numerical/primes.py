@@ -1,4 +1,9 @@
-# Compute the prime factorization of an integer.
+# -*- coding: utf-8 -*-
+"""
+Compute the prime factorization of an integer.
+
+Translate from primes.c.
+"""
 from math import sqrt
 
 

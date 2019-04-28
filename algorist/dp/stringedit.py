@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute the optimal alignment matching two strings.
+
+Translate from stringedit.c.
+"""
 from algorist.dp.editdistance_cell import Cell, INSERT, DELETE
 
 
