@@ -61,3 +61,6 @@ class Queue:
 
     def print(self) -> None:
         print(' '.join(str(x) for x in self))
+
+    def size(self):
+        return self.count
