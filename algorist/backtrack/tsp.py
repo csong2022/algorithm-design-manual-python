@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Heuristics for solving TSP.
 
 Translate from tsp.h, tsp.c.
 """
+
+__author__ = "csong2022"
+
 import random
 from math import sqrt
 

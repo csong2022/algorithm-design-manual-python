@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 A backtracking program to solve Sudoku.
 
 Translate from sudoku.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.backtrack.backtrack import BacktrackCallback, Backtrack
 
 BASED = 3  # base dimension, 3*3 blocks

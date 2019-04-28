@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Simulated Annealing Implementation.
 
 Translate from annealing.h, annealing.c.
 """
+
+__author__ = "csong2022"
 
 import copy
 import random

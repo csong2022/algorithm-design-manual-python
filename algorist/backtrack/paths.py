@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Enumerate the paths in a graph via backtracking.
 
 Translate from paths.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.backtrack.backtrack import BacktrackCallback, NMAX
 from algorist.graph.graph import Graph
 
