@@ -7,11 +7,11 @@ Translate from partition.c.
 MAXINT = 100000  # infinity
 
 
-def read_partition(input):
-    n, k = list(map(int, input.readline().split()))
+def read_partition(_input):
+    n, k = list(map(int, _input.readline().split()))
     s = [0] * (n + 1)
     for i in range(1, n + 1):
-        s[i] = int(input.readline()[:-1])
+        s[i] = int(_input.readline()[:-1])
 
     return s, n, k
 

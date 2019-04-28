@@ -37,9 +37,9 @@ class Tree:
             return self._search(l.right, x)
 
     def insert(self, x) -> None:
-        self.root = self._insert(self.root, x, None)
+        self.root = self._insert(self.root, x)
 
-    def _insert(self, l: Node, x, parent: Node) -> Node:
+    def _insert(self, l: Node, x, parent: Node = None) -> Node:
         if l is None:
             return Node(x, parent)
 
@@ -72,10 +72,10 @@ class Tree:
         if t is None:
             return None
 
-        min = t
-        while min.left is not None:
-            min = min.left
-        return min
+        _min = t
+        while _min.left is not None:
+            _min = _min.left
+        return _min
 
     def _predecessor_descendant(self, t: Node) -> Node:
         if t.left is None:

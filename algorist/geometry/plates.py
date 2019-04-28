@@ -2,7 +2,7 @@
 """
 Compute the number of circles in two different disk packings.
 Assuming we have an $w \times l$ box, how many unit disks
-can we pack in there assumming we have w disks on the bottom?
+can we pack in there assuming we have w disks on the bottom?
 
 Translate from plates.c.
 """
@@ -52,14 +52,14 @@ def hex_to_geo(xh: int, yh: int, r: float) -> tuple:
 
 def geo_to_hex(xg: float, yg: float, r: float) -> tuple:
     xh = (2.0 / sqrt(3)) * yg / (2.0 * r)
-    yh = (xg - (2.0 * r) * (xh) * (1.0 / 2.0)) / (2.0 * r)
+    yh = (xg - (2.0 * r) * xh * (1.0 / 2.0)) / (2.0 * r)
 
     return xh, yh
 
 
 def array_to_hex(xa: int, ya: int) -> tuple:
-    xh = xa;
-    yh = ya - xa + ceil(xa / 2.0);
+    xh = xa
+    yh = ya - xa + ceil(xa / 2.0)
     return xh, yh
 
 

@@ -81,7 +81,7 @@ class Triangle:
 
 class Triangulation:
     def __init__(self, t: list, n: int):
-        self.t = t  # indicies of vertices in triangulation
+        self.t = t  # indices of vertices in triangulation
         self.n = n  # number of triangles in triangulation
 
     def add_triangle(self, i: int, j: int, k: int) -> None:
@@ -124,24 +124,24 @@ def point_and_slope_to_line(p: Point, m: float) -> Line:
     return Line(a, b, c)
 
 
-def parallelQ(l1: Line, l2: Line) -> bool:
+def parallel_q(l1: Line, l2: Line) -> bool:
     return abs(l1.a - l2.a) <= EPSILON and abs(l1.b - l2.b) <= EPSILON
 
 
-def same_lineQ(l1: Line, l2: Line) -> bool:
-    return parallelQ(l1, l2) and abs(l1.c - l2.c) <= EPSILON
+def same_line_q(l1: Line, l2: Line) -> bool:
+    return parallel_q(l1, l2) and abs(l1.c - l2.c) <= EPSILON
 
 
-def intersection_point(l1: Line, l2: Line) -> bool:
-    if same_lineQ(l1, l2):
+def intersection_point(l1: Line, l2: Line) -> Point:
+    if same_line_q(l1, l2):
         print("Warning: Identical lines, all points intersect.")
         return Point(0.0, 0.0)
 
-    if parallelQ(l1, l2):
+    if parallel_q(l1, l2):
         print("Error: Distinct parallel lines do not intersect.")
         return None
 
-    x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b);
+    x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b)
 
     if abs(l1.b) > EPSILON:  # test for vertical line
         y = - (l1.a * x + l1.c) / l1.b
@@ -202,13 +202,13 @@ def segments_intersect(s1: Segment, s2: Segment) -> bool:
     l1 = points_to_line(s1.p1, s1.p2)
     l2 = points_to_line(s2.p1, s2.p2)
 
-    if same_lineQ(l1, l2):  # overlapping or disjoint segments
+    if same_line_q(l1, l2):  # overlapping or disjoint segments
         return point_in_box(s1.p1, s2.p1, s2.p2) or \
                point_in_box(s1.p2, s2.p1, s2.p2) or \
                point_in_box(s2.p1, s1.p1, s1.p2) or \
                point_in_box(s2.p2, s1.p1, s1.p2)
 
-    if parallelQ(l1, l2):
+    if parallel_q(l1, l2):
         return False
 
     p = intersection_point(l1, l2)
@@ -236,8 +236,8 @@ def collinear(a: Point, b: Point, c: Point) -> bool:
     return abs(signed_triangle_area(a, b, c)) <= EPSILON
 
 
-def read_point(input) -> Point:
-    line = input.readline()
+def read_point(__input) -> Point:
+    line = __input.readline()
     if not line:
         return None
     else:
@@ -245,17 +245,17 @@ def read_point(input) -> Point:
         return Point(x, y)
 
 
-def read_points(input) -> list:
-    n = int(input.readline()[:-1])  # number of points
+def read_points(_input) -> list:
+    n = int(_input.readline()[:-1])  # number of points
 
     p = []
     for i in range(n):
-        p.append(read_point(input))
+        p.append(read_point(_input))
 
     return p
 
 
-def read_circle(input) -> Circle:
-    line = input.readline()
+def read_circle(_input) -> Circle:
+    line = _input.readline()
     x, y, r = list(map(float, line.split()))
     return Circle(Point(x, y), r)

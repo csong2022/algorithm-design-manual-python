@@ -40,7 +40,7 @@ E = 2.718
 """
 problem specific Boltzman's constant May have to adjust if your global
 value function changes the sizes of the numbers it produces.  It is
-important that jumps seem random at the begining of the run, and rare
+important that jumps seem random at the beginning of the run, and rare
 at the end of a run, and this is a knob to tweak that.
 """
 K = 0.01
@@ -111,7 +111,7 @@ class Annealing:
         bestsol = copy.copy(s)
 
         for i in range(nsamples + 1):
-            self.hill_climbing(t, s)
+            s = self.hill_climbing(t)
             cost_now = solution_cost(s, t)
             if cost_now < best_cost:
                 best_cost = cost_now
@@ -121,7 +121,7 @@ class Annealing:
 
     def anneal(self, t: TspInstance) -> TspSolution:
         """These routines implement simulated annealing.  Pairs of components
-        of the same type will be swapped at random, and the new arrangment
+        of the same type will be swapped at random, and the new arrangement
         accepted either if (1) it is an improvement, or (2) the penalty is
         less than a random number, which is a function of the temperature
         of the system.

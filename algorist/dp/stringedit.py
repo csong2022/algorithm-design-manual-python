@@ -12,13 +12,13 @@ class StringEdit:
     Compute the optimal alignment matching two strings
     """
 
-    def goal_cell(self, s: str, t: str, m: list = None) -> int:
+    def goal_cell(self, s: str, t: str, m: list = None) -> tuple:
         return len(s) - 1, len(t) - 1
 
-    def match(self, c: int, d: int) -> int:
+    def match(self, c: str, d: str) -> int:
         return 0 if c == d else 1
 
-    def indel(self, c: int) -> int:
+    def indel(self, c: str) -> int:
         return 1
 
     def row_init(self, i: int, m: list) -> None:  # what is m[0][i]?

@@ -18,14 +18,14 @@ values = "23456789TJQKA"
 suits = "cdhs"
 
 
-def rank_card(value: str, suit: str) -> int:
+def rank_card(_value: str, _suit: str) -> int:
     for i in range(NCARDS // NSUITS):
-        if values[i] == value:
+        if values[i] == _value:
             for j in range(NSUITS):
-                if suits[j] == suit:
+                if suits[j] == _suit:
                     return i * NSUITS + j
 
-    print("Warning: bad input value=%c, suit=%c" % (value, suit))
+    print("Warning: bad input value=%c, suit=%c" % (_value, _suit))
     return -1
 
 
@@ -44,8 +44,8 @@ def testcards() -> None:
               (i, value(i), suit(i), rank_card(value(i), suit(i))))
 
 
-def random_init_deck(a: Queue, b: Queue) -> None:
-    perm = [0] * [NCARDS]
+def random_init_deck() -> tuple:
+    perm = [0] * NCARDS
 
     for i in range(NCARDS):
         perm[i] = i
@@ -61,6 +61,8 @@ def random_init_deck(a: Queue, b: Queue) -> None:
 
     print_card_queue(a)
     print_card_queue(b)
+
+    return a, b
 
 
 def war(a: Queue, b: Queue) -> None:
@@ -97,8 +99,8 @@ def war(a: Queue, b: Queue) -> None:
 
 
 def print_card_queue(q: Queue) -> None:
-    for value in q:
-        print("%c%c " % (value(value), suit(value)))
+    for _value in q:
+        print("%c%c " % (value(_value), suit(_value)))
     print()
 
 

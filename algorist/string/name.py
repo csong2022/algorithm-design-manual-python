@@ -7,12 +7,12 @@ Translate from name.c.
 # Corporate name changing program -- string example
 
 
-def read_changes(input) -> list:
+def read_changes(_input) -> list:
     mergers = []
-    nmergers = int(input.readline()[:-1])
+    nmergers = int(_input.readline()[:-1])
 
     for i in range(nmergers):
-        line = input.readline()
+        line = _input.readline()
         mergers.append(read_quoted_strings(line[:-1]))
     return mergers
 
@@ -90,4 +90,4 @@ def process_mergers(s: list, slen: int, mergers: list) -> int:
                 break
             slen = replace_x_with_y(s, slen, pos, len(mergers[j][0]), mergers[j][1])
 
-    return slen;
+    return slen

@@ -60,7 +60,7 @@ class EditDistance:
             self.reconstruct_path(s, t, i - 1, j)
             self.string_edit.delete_out(s, i)
 
-    def print_matrix(self, s: str, t: str, costQ: bool) -> None:
+    def print_matrix(self, s: str, t: str, cost_q: bool) -> None:
         x = len(s)
         y = len(t)
 
@@ -72,7 +72,7 @@ class EditDistance:
         for i in range(x):
             print("%c: " % s[i], end='')
             for j in range(y):
-                if costQ:
+                if cost_q:
                     print(" %2d" % self.m[i][j].cost, end='')
                 else:
                     print(" %2d" % self.m[i][j].parent, end='')

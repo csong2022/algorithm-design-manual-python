@@ -4,7 +4,7 @@ Compute shortest paths in weighted graphs using Dijkstra's algorithm.
 """
 from algorist.graph.graph import Graph
 
-MAXINT = 100007;
+MAXINT = 100007
 
 
 def dijkstra(g: Graph, start: int) -> list:

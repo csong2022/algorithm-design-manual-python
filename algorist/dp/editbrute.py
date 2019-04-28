@@ -20,8 +20,10 @@ class EditBrute(EditDistance):
     def string_compare2(self, s: str, t: str, i: int, j: int) -> int:
         opt = [0] * 3  # cost of the three options
 
-        if i == 0: return j * self.string_edit.indel(' ')
-        if j == 0: return i * self.string_edit.indel(' ')
+        if i == 0:
+            return j * self.string_edit.indel(' ')
+        if j == 0:
+            return i * self.string_edit.indel(' ')
 
         opt[MATCH] = self.string_compare2(s, t, i - 1, j - 1) + self.string_edit.match(s[i], t[j])
         opt[INSERT] = self.string_compare2(s, t, i, j - 1) + self.string_edit.indel(t[j])

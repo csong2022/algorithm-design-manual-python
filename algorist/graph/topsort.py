@@ -19,7 +19,7 @@ def compute_indegrees(g: Graph):  # indegree of each vertex
 
 
 def topsort(g: Graph):
-    sorted = [None] * (g.nvertices + 1)
+    _sorted = [None] * (g.nvertices + 1)
     indegree = compute_indegrees(g)
 
     zeroin = Queue()  # vertices of indegree 0
@@ -31,7 +31,7 @@ def topsort(g: Graph):
     while not zeroin.is_empty():
         j += 1
         x = zeroin.dequeue()
-        sorted[j] = x
+        _sorted[j] = x
         for p in g.edges[x]:
             y = p.y
             indegree[y] -= 1
@@ -41,4 +41,4 @@ def topsort(g: Graph):
     if j != g.nvertices:
         print("Not a DAG -- only %d vertices found" % j)
 
-    return sorted
+    return _sorted

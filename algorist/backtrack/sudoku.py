@@ -34,10 +34,10 @@ class Board:
                 b.m[i][j] = a.m[i][j]
 
     @staticmethod
-    def read(input):
+    def read(_input):
         board = Board()
         for i in range(DIMENSION):
-            line = input.readline()
+            line = _input.readline()
             for j in range(DIMENSION):
                 value = Board.to_digit(line[j])
                 if value != 0:
@@ -185,7 +185,7 @@ class Sudoku(BacktrackCallback):
                 if newcnt == 0 and board.m[i][j] == 0:
                     doomed = True
                 if self.fast:
-                    if newcnt < bestcnt and newcnt >= 1:
+                    if 1 <= newcnt < bestcnt:
                         bestcnt = newcnt
                         x = i
                         y = j

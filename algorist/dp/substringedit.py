@@ -12,7 +12,8 @@ class SubStringEdit(StringEdit):
     """
     Approximately match one string as a substring of another, where is s in t?
     """
-    def goal_cell(self, s: str, t: str, m: list) -> tuple:
+
+    def goal_cell(self, s: str, t: str, m: list = None) -> tuple:
         i = len(s) - 1
         j = 0
 

@@ -46,19 +46,19 @@ class PriorityQueue:
         self.bubble_up(self.n)
 
     def extract_min(self):
-        min = None  # minimum value
+        _min = None  # minimum value
 
         if self.is_empty():
             print("Warning: empty priority queue.")
         else:
-            min = self.q[1]
+            _min = self.q[1]
 
             self.q[1] = self.q[self.n]
             self.q[self.n] = None
             self.n -= 1
             self.bubble_down(1)
 
-        return min
+        return _min
 
     def is_empty(self) -> bool:
         return self.n == 0

@@ -7,9 +7,9 @@ Translate from queue.h, queue.c. Implement with singly linked list. Add iterator
 
 
 class Node:
-    def __init__(self, item, next=None):
+    def __init__(self, item, _next=None):
         self.item = item  # data item
-        self.next = next  # point to successor
+        self.next = _next  # point to successor
 
 
 class QueueIterator:

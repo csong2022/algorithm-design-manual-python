@@ -48,7 +48,7 @@ class StrongCallback(GraphSearchCallback):
 
     def pop_component(self, v: int) -> None:
         self.components_found += 1
-        print("%d is in component %d " % (v, self.components_found));
+        print("%d is in component %d " % (v, self.components_found))
 
         self.scc[v] = self.components_found
 
@@ -57,7 +57,7 @@ class StrongCallback(GraphSearchCallback):
             if t == v:
                 break
             self.scc[t] = self.components_found
-            print("%d is in component %d with %d " % (t, self.components_found, v));
+            print("%d is in component %d with %d " % (t, self.components_found, v))
 
     def process_edge(self, x: int, y: int) -> None:
         classification = self.dfs.edge_classification(x, y)

@@ -26,7 +26,7 @@ def convex_hull(_in: list, n: int) -> Polygon:
 
     _in[1: n] = sorted(_in[1: n], key=cmp_to_key(smaller_angle(first_point)))
 
-    points = [None] * (n + 1)  # convex hull points
+    points = [Point(0, 0)] * (n + 1)  # convex hull points
     points[0] = first_point
     points[1] = _in[1]
 
@@ -41,7 +41,7 @@ def convex_hull(_in: list, n: int) -> Polygon:
         else:
             if not collinear(points[top - 1], points[top], _in[i]):
                 top += 1
-            points[top] = _in[i];
+            points[top] = _in[i]
             i += 1
 
     return Polygon(points, top)
@@ -78,7 +78,7 @@ def leftlower(p1: Point, p2: Point) -> int:
 
 
 def smaller_angle(first_point: Point) -> types.FunctionType:
-    def _smaller_angle(p1: Point, p2: Point) -> bool:
+    def _smaller_angle(p1: Point, p2: Point) -> int:
         if collinear(first_point, p1, p2):
             if distance(first_point, p1) <= distance(first_point, p2):
                 return -1

@@ -14,7 +14,7 @@ class EdgePair:
 
 
 def to_edge_array(g: Graph) -> list:
-    e = [None] * (g.nedges + 1)
+    e = [EdgePair(0, 0, 0)] * (g.nedges + 1)
 
     m = 0
     for i in range(1, g.nvertices + 1):
