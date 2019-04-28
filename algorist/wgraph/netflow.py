@@ -1,7 +1,11 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Network flow implementation -- Ford-Fulkerson augmenting path algorithm.
 """
+
+__author__ = "csong2022"
+
 from algorist.graph.bfs_dfs import BFS
 from algorist.graph.graph import Graph, GraphSearchCallback
 

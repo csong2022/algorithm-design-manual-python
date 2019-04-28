@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Rank the desirability of suitors -- sorting example.
 """
 
+__author__ = "csong2022"
 
 class Suitor:
     def __init__(self, first: str, last: str, height: int, weight: int):

@@ -1,10 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Corporate name changing program -- string example
 
 Translate from name.c.
 """
-# Corporate name changing program -- string example
+
+__author__ = "csong2022"
 
 
 def read_changes(_input) -> list:

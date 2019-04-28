@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Implementation of a LIFO stack abstract data type.
 
 Translate from stack.h, stack.c. Add iterator implementation.
 *"""
+
+__author__ = "csong2022"
 
 
 class Node:

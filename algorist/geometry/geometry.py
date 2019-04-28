@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Basic geometric primitives and data types -- Lines, Circles, Segments
 
 Translate from geometry.h, geometry.c.
 """
+
+__author__ = "csong2022"
+
 from math import sqrt
 
 PI = 3.1415926  # ratio of circumference to diameter

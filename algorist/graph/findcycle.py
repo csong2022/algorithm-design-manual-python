@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Identify a cycle in a graph, if one exists.
 
 Translate from findcycle.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.graph.bfs_dfs import EdgeType, DFS
 from algorist.graph.graph import GraphSearchCallback
 

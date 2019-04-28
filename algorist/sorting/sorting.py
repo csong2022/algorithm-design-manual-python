@@ -1,9 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Sorting algorithms.
 
 Translate from sorting.c.
 """
+
+__author__ = "csong2022"
+
 from algorist.data_structure.priority_queue import PriorityQueue
 
 

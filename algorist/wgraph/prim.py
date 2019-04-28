@@ -1,7 +1,11 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute minimum spanning trees of graphs via Dijkstra/Prim's algorithm.
 """
+
+__author__ = "csong2022"
+
 from algorist.graph.graph import Graph
 
 MAXINT = 100007

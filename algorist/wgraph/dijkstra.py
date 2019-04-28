@@ -1,7 +1,11 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Compute shortest paths in weighted graphs using Dijkstra's algorithm.
 """
+
+__author__ = "csong2022"
+
 from algorist.graph.graph import Graph
 
 MAXINT = 100007

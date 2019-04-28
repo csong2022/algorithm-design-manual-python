@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Union-find data structure implementation.
 
 Translate from set_union.h, set_union.c.
 """
+
+__author__ = "csong2022"
 
 
 class SetUnion:
@@ -25,7 +28,7 @@ class SetUnion:
 
         print("s1=%d r1=%d s2=%d r2=%d" % (s1, r1, s2, r2))
 
-        if r1 == r2:   # already in same set
+        if r1 == r2:  # already in same set
             return
 
         if self.size[r1] >= self.size[r2]:

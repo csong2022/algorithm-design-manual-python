@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Multiply two matrices.
 
 Translate from matrix.c.
 """
+
+__author__ = "csong2022"
 
 
 class Matrix:

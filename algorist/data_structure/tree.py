@@ -1,9 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Binary search tree container implementation.
 
 Translate from tree.h, tree-demo.c.
 """
+
+__author__ = "csong2022"
 
 
 class Node:
