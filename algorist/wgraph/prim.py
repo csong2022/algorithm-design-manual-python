@@ -9,7 +9,7 @@ MAXINT = 100007
 
 def prim(g: Graph, start: int) -> list:
     """
-    ompute minimum spanning trees of graphs via Dijkstra/Prim's algorithm.
+    Compute minimum spanning trees of graphs via Dijkstra/Prim's algorithm.
     :param g: weighted graph
     :param start: starting vertex
     :return: discovery relation array

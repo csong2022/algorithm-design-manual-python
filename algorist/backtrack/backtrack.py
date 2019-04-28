@@ -80,17 +80,17 @@ class Backtrack:
     def __init__(self):
         self.finished = False  # found all solutions yet?
 
-    def backtrack(self, a: list, k: int, input, callback: BacktrackCallback) -> None:
-        if callback.is_a_solution(a, k, input):
-            callback.process_solution(a, k, input)
+    def backtrack(self, a: list, k: int, _input, callback: BacktrackCallback) -> None:
+        if callback.is_a_solution(a, k, _input):
+            callback.process_solution(a, k, _input)
         else:
             k += 1
-            c, ncandidates = callback.construct_candidates(a, k, input)
+            c, ncandidates = callback.construct_candidates(a, k, _input)
 
             for i in range(ncandidates):
                 a[k] = c[i]
-                callback.make_move(a, k, input)
-                self.backtrack(a, k, input, callback)
+                callback.make_move(a, k, _input)
+                self.backtrack(a, k, _input, callback)
                 if self.finished:  # terminate early
                     return
-                callback.unmake_move(a, k, input)
+                callback.unmake_move(a, k, _input)

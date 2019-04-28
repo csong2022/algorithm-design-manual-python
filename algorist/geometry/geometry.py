@@ -81,7 +81,7 @@ class Triangle:
 
 class Triangulation:
     def __init__(self, t: list, n: int):
-        self.t = t  # indicies of vertices in triangulation
+        self.t = t  # indices of vertices in triangulation
         self.n = n  # number of triangles in triangulation
 
     def add_triangle(self, i: int, j: int, k: int) -> None:

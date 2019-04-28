@@ -2,7 +2,7 @@
 """
 Compute the number of circles in two different disk packings.
 Assuming we have an $w \times l$ box, how many unit disks
-can we pack in there assumming we have w disks on the bottom?
+can we pack in there assuming we have w disks on the bottom?
 
 Translate from plates.c.
 """

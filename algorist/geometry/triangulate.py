@@ -10,7 +10,7 @@ from algorist.geometry.geometry import Polygon, Triangulation, Triangle, cw, Poi
 
 
 def triangulate(p: Polygon) -> Triangulation:
-    l = [(i - 1 + p.n) % p.n for i in range(p.n)]  # left/right neighbor indices
+    left = [(i - 1 + p.n) % p.n for i in range(p.n)]  # left/right neighbor indices
     r = [(i + 1 + p.n) % p.n for i in range(p.n)]
 
     t = Triangulation([], 0)
@@ -18,10 +18,10 @@ def triangulate(p: Polygon) -> Triangulation:
 
     while t.n < p.n - 2:
         i = r[i]
-        if ear_q(l[i], i, r[i], p):
-            t.add_triangle(l[i], i, r[i])
-            l[r[i]] = l[i]
-            r[l[i]] = r[i]
+        if ear_q(left[i], i, r[i], p):
+            t.add_triangle(left[i], i, r[i])
+            left[r[i]] = left[i]
+            r[left[i]] = r[i]
 
     return t
 

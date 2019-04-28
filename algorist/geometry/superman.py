@@ -21,10 +21,10 @@ def superman(s: Point, t: Point, c: list, ncircles: int) -> None:
     """
     xray = 0.0  # length of intersection with circles
     around = 0.0  # length around circular arcs
-    l = points_to_line(s, t)
+    line = points_to_line(s, t)  # line from start to target position
 
     for i in range(1, ncircles + 1):
-        close = closest_point(c[i].c, l)
+        close = closest_point(c[i].c, line)
         d = distance(c[i].c, close)
 
         if 0 <= d < c[i].r and point_in_box(close, s, t):
