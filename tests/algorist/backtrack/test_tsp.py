@@ -1,4 +1,3 @@
-import unittest
 from unittest import TestCase
 
 from algorist.backtrack.annealing import Annealing
@@ -25,6 +24,6 @@ class TestTsp(TestCase):
 
         s.print()
 
-    @unittest.skip
+    # @unittest.skip
     def test(self):
         execute(self, "tsp48-in", "tsp48-out")

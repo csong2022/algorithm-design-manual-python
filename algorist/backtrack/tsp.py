@@ -62,15 +62,15 @@ class TspSolution:
 
         return TspSolution(p, n)
 
-    def print(self):
-        for i in range(self.n + 1):
-            print(" %d" % self.p[i])
-        print("\n------------------------------------------------------")
-
     def random_solution(self):
         p = self.p[1:]
         random.shuffle(p)
         self.p[1:] = p
+
+    def print(self):
+        for i in range(1, self.n + 1):
+            print(" %d" % self.p[i], end='')
+        print("\n------------------------------------------------------")
 
 
 def sq(x: int) -> int:
@@ -99,7 +99,7 @@ def distance(s: TspSolution, x: int, y: int, t: TspInstance) -> float:
 def solution_cost(s: TspSolution, t: TspInstance) -> float:
     cost = distance(s, t.n, 1, t)  # cost of solution
 
-    for i in range(t.n):
+    for i in range(1, t.n):
         cost += distance(s, i, i + 1, t)
 
     return cost
