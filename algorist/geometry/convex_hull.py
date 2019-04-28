@@ -41,7 +41,7 @@ def convex_hull(_in: list, n: int) -> Polygon:
         else:
             if not collinear(points[top - 1], points[top], _in[i]):
                 top += 1
-            points[top] = _in[i];
+            points[top] = _in[i]
             i += 1
 
     return Polygon(points, top)

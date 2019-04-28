@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from algorist.geometry.geometry import Point, points_to_line, point_and_slope_to_line, parallelQ, intersection_point, \
+from algorist.geometry.geometry import Point, points_to_line, point_and_slope_to_line, parallel_q, intersection_point, \
     closest_point, read_point
 from tests.algorist.test.test_engine import execute
 
@@ -41,7 +41,7 @@ class GeoTest(TestCase):
             l3.print()
 
             print("parallel lines test")
-            print("%d" % (1 if parallelQ(l1, l2) else 0))
+            print("%d" % (1 if parallel_q(l1, l2) else 0))
 
             print("intersection point")
 

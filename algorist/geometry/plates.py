@@ -58,8 +58,8 @@ def geo_to_hex(xg: float, yg: float, r: float) -> tuple:
 
 
 def array_to_hex(xa: int, ya: int) -> tuple:
-    xh = xa;
-    yh = ya - xa + ceil(xa / 2.0);
+    xh = xa
+    yh = ya - xa + ceil(xa / 2.0)
     return xh, yh
 
 

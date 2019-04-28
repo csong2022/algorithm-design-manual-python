@@ -4,6 +4,8 @@ Compute the binomial coefficients using dynamic programming.
 
 Translate from binomial.c.
 """
+
+
 def binomial_coefficient(n: int, m: int) -> list:
     """
     Compute the binomial coefficients using dynamic programming.

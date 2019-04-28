@@ -185,7 +185,7 @@ class Sudoku(BacktrackCallback):
                 if newcnt == 0 and board.m[i][j] == 0:
                     doomed = True
                 if self.fast:
-                    if newcnt < bestcnt and newcnt >= 1:
+                    if 1 <= newcnt < bestcnt:
                         bestcnt = newcnt
                         x = i
                         y = j

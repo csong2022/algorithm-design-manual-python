@@ -86,7 +86,8 @@ def path_volume(g: Graph, start: int, end: int, parents: list) -> int:
 
 
 def augment_path(g: Graph, start: int, end: int, parents: list, volume: int) -> None:
-    if start == end: return
+    if start == end:
+        return
 
     e = g.find_edge(parents[end], end)
     e.increase_flow(volume)

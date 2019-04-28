@@ -23,9 +23,10 @@ class SetUnion:
         r1 = self.find(s1)
         r2 = self.find(s2)
 
-        print("s1=%d r1=%d s2=%d r2=%d" % (s1, r1, s2, r2));
+        print("s1=%d r1=%d s2=%d r2=%d" % (s1, r1, s2, r2))
 
-        if r1 == r2: return  # already in same set
+        if r1 == r2:   # already in same set
+            return
 
         if self.size[r1] >= self.size[r2]:
             self.size[r1] += self.size[r2]

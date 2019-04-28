@@ -18,7 +18,7 @@ def triangulate(p: Polygon) -> Triangulation:
 
     while t.n < p.n - 2:
         i = r[i]
-        if ear_Q(l[i], i, r[i], p):
+        if ear_q(l[i], i, r[i], p):
             t.add_triangle(l[i], i, r[i])
             l[r[i]] = l[i]
             r[l[i]] = r[i]
@@ -26,7 +26,7 @@ def triangulate(p: Polygon) -> Triangulation:
     return t
 
 
-def ear_Q(i: int, j: int, k: int, p: Polygon) -> bool:
+def ear_q(i: int, j: int, k: int, p: Polygon) -> bool:
     t = Triangle(p.p[i], p.p[j], p.p[k])
 
     if cw(t.a, t.b, t.c):

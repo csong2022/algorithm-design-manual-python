@@ -4,7 +4,7 @@ Compute minimum spanning trees of graphs via Dijkstra/Prim's algorithm.
 """
 from algorist.graph.graph import Graph
 
-MAXINT = 100007;
+MAXINT = 100007
 
 
 def prim(g: Graph, start: int) -> list:

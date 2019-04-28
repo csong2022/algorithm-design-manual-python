@@ -90,4 +90,4 @@ def process_mergers(s: list, slen: int, mergers: list) -> int:
                 break
             slen = replace_x_with_y(s, slen, pos, len(mergers[j][0]), mergers[j][1])
 
-    return slen;
+    return slen

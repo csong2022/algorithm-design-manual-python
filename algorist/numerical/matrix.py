@@ -5,6 +5,7 @@ Multiply two matrices.
 Translate from matrix.c.
 """
 
+
 class Matrix:
     def __init__(self, rows: int, columns: int):
         self.rows = rows
@@ -42,6 +43,6 @@ def multiply(a: Matrix, b: Matrix) -> Matrix:
         for j in range(1, b.columns + 1):
             c.m[i][j] = 0
             for k in range(1, b.rows + 1):
-                c.m[i][j] += a.m[i][k] * b.m[k][j];
+                c.m[i][j] += a.m[i][k] * b.m[k][j]
 
     return c
