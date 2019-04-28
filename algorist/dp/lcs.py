@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Longest common subsequence of two strings.
+
+Generify from lcs.c.
+"""
 from algorist.dp.editdistance import EditDistance, MAXLEN
 
 

@@ -1,7 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Union-find data structure implementation.
+
+Translate from set_union.h, set_union.c.
+"""
+
+
 class SetUnion:
-    """
-    Union-find data structure implementation.
-    """
 
     def __init__(self, n):
         self.n = n  # number of elements in set

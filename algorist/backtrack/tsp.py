@@ -1,4 +1,9 @@
-# Heuristics for solving TSP
+# -*- coding: utf-8 -*-
+"""
+Heuristics for solving TSP.
+
+Translate from tsp.h, tsp.c.
+"""
 import random
 from math import sqrt
 

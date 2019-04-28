@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Compute all-pairs shortest paths in weighted graphs.
+"""
 from algorist.graph.graph import Graph
 
 MAXINT = 100007

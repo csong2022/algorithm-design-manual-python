@@ -1,4 +1,10 @@
-# Simulated Annealing Implementation
+# -*- coding: utf-8 -*-
+"""
+Simulated Annealing Implementation.
+
+Translate from annealing.h, annealing.c.
+"""
+
 import copy
 import random
 

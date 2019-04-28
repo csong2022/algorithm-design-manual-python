@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Corporate name changing program -- string example
+
+Translate from name.c.
+"""
 # Corporate name changing program -- string example
 
 

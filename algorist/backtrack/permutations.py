@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Construct all permutations via backtracking.
+
+Translate from permutations.c.
+"""
 from algorist.backtrack.backtrack import BacktrackCallback
 
 

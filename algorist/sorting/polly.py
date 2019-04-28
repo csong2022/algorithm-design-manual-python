@@ -1,4 +1,8 @@
-# Rank the desirability of suitors -- sorting example.
+# -*- coding: utf-8 -*-
+"""
+Rank the desirability of suitors -- sorting example.
+"""
+
 
 class Suitor:
     def __init__(self, first: str, last: str, height: int, weight: int):

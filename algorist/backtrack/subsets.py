@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Construct all subsets via backtracking.
+
+Translate from subsets.c.
+"""
 from algorist.backtrack.backtrack import BacktrackCallback
 
 

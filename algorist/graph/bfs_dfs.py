@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+A generic implementation of graph traversal: breadth-first
+and depth-first search
+
+Translate from bfs-dfs.c.
+"""
 from collections import Iterable
 from enum import Enum
 

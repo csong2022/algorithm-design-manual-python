@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Network flow implementation -- Ford-Fulkerson augmenting path algorithm.
+"""
 from algorist.graph.bfs_dfs import BFS
 from algorist.graph.graph import Graph, GraphSearchCallback
 

@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Identify a cycle in a graph, if one exists.
+
+Translate from findcycle.c.
+"""
 from algorist.graph.bfs_dfs import EdgeType, DFS
 from algorist.graph.graph import GraphSearchCallback
 

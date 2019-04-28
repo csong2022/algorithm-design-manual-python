@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Implementation of a FIFO queue abstract data type.
+
+Translate from queue.h, queue.c. Implement with singly linked list. Add iterator implementation.
+"""
+
+
 class Node:
     def __init__(self, item, next=None):
         self.item = item  # data item
@@ -18,10 +26,6 @@ class QueueIterator:
 
 
 class Queue:
-    """
-    Implementation of a FIFO queue abstract data type.
-    """
-
     def __init__(self):
         self.count = 0  # number of queue elements
         self.first = None  # first element

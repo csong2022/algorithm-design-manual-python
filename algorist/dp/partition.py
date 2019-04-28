@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Optimally balance partitions using dynamic programming.
+
+Translate from partition.c.
+"""
 MAXINT = 100000  # infinity
 
 

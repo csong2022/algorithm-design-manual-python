@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Compute the connected components of a graph.
+
+Translate from connected.c.
+"""
 from algorist.graph.bfs_dfs import BFS
 from algorist.graph.graph import GraphSearchCallback, Graph
 

@@ -1,4 +1,9 @@
-# Multiply two matrices.
+# -*- coding: utf-8 -*-
+"""
+Multiply two matrices.
+
+Translate from matrix.c.
+"""
 
 class Matrix:
     def __init__(self, rows: int, columns: int):

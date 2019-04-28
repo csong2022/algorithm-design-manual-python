@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Implementation of large integer arithmetic: addition, subtraction,
+multiplication, and division.
+<p>
+Translate from bignum.c.
+"""
+
 import copy
 
 MAXDIGITS = 100  # maximum length bignum
@@ -8,16 +16,12 @@ DIGITS = "0123456789"
 
 
 class Bignum:
-    """
-    	Implementation of large integer arithmetic: addition, subtraction,
-		multiplication, and division.
-    """
 
     def __init__(self):
         self.digits = [0] * MAXDIGITS  # represent the number
         self.signbit = 0  # 1 if positive, -1 if negative
         self.lastdigit = -1  # index of high-order digit
-        #int_to_bignum(0, self)
+        # int_to_bignum(0, self)
 
     def print(self):
         if self.signbit == MINUS:
@@ -93,7 +97,7 @@ def subtract_bignum(a: Bignum, b: Bignum) -> Bignum:
     borrow = 0
 
     for i in range(c.lastdigit + 1):
-        v = a.digits[i] - borrow - b.digits[i] # placeholder digit
+        v = a.digits[i] - borrow - b.digits[i]  # placeholder digit
         if a.digits[i] > 0:
             borrow = 0
         if v < 0:

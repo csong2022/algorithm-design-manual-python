@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Fibonacci Numbers.
+
+Translate from fib.c.
+"""
 MAXN = 45  # largest n or m
 UNKNOWN = -1  # contents denote an empty cell
 

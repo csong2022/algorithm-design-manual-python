@@ -1,13 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Basic geometric primitives and data types -- Lines, Circles, Segments
+
+Translate from geometry.h, geometry.c.
+"""
 from math import sqrt
 
 PI = 3.1415926  # ratio of circumference to diameter
 EPSILON = 0.000001  # a quantity small enough to be zero
 DIMENSION = 2  # dimension of points
 MAXPOLY = 200  # maximum number of points in a polygon
-
-"""
-Basic geometric primitives and data types -- Lines, Circles, Segments
-"""
 
 
 class Point:

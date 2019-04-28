@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Edit distance dynamic programming table cell.
+"""
 MATCH = 0  # enumerated type symbol for match
 INSERT = 1  # enumerated type symbol for insert
 DELETE = 2  # enumerated type symbol for delete

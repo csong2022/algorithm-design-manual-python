@@ -1,7 +1,9 @@
-# Simulation of the children's card game War
-#
-# 	Read in cards with format value, suit, e.g. 4h
-# 	ranked by orders 23456789TJQKA and cdhs
+# -*- coding: utf-8 -*-
+"""
+Simulation of the children's card game War
+
+Read in cards with format value, suit, e.g. 4h ranked by orders 23456789TJQKA and cdhs
+"""
 import random
 
 from algorist.data_structure.linked_queue import Queue
