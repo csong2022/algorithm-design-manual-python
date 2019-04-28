@@ -25,7 +25,7 @@ class BacktrackCallback:
         """
         pass
 
-    def construct_candidates(self, a: list, k: int, input) -> int:
+    def construct_candidates(self, a: list, k: int, input) -> tuple:
         """
         Fills an array c with the complete set of possible candidates for the kth position of a,
         given the contents of the first k - 1 positions.
@@ -35,7 +35,7 @@ class BacktrackCallback:
         :param input: allow pass general information.
         :return: pair candidates and number of candidates and
         """
-        return 0
+        return (), 0
 
     def make_move(self, a: list, k: int, input) -> None:
         """
