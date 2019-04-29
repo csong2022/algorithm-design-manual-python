@@ -20,6 +20,7 @@ from algorist.graph.graph import Graph, GraphSearchCallback
 class GraphSearchUtils:
     @staticmethod
     def find_path(start: int, end: int, parents: list) -> Iterable:
+        """Find a path between start and end vertices."""
         path = Stack()
         GraphSearchUtils._find_path(start, end, parents, path)
         return path
@@ -34,6 +35,8 @@ class GraphSearchUtils:
 
 
 class AbstractGraphSearch:
+    """General implementation of graph traversal"""
+
     def __init__(self, g: Graph):
         assert g is not None, "Graph not set."
 
@@ -64,6 +67,8 @@ class BFS(AbstractGraphSearch):
         super().__init__(g)
 
     def search(self, start: int, callback: GraphSearchCallback) -> None:
+        """Breadth first search."""
+
         assert 1 <= start <= self.g.nvertices, "Invalid vertex %d" % start
 
         q = Queue()
@@ -115,6 +120,7 @@ class DFS(AbstractGraphSearch):
         self.time = 0
 
     def edge_classification(self, x: int, y: int) -> EdgeType:
+        """Classify edge type."""
         assert 1 <= x <= self.g.nvertices, "Invalid vertex %d" % x
         assert 1 <= y <= self.g.nvertices, "Invalid vertex %d" % y
 
@@ -131,6 +137,7 @@ class DFS(AbstractGraphSearch):
         return None
 
     def search(self, v: int, callback: GraphSearchCallback) -> None:
+        """Depth first search."""
         assert 1 <= v <= self.g.nvertices, "Invalid vertex %d" % v
 
         if self.finished:  # allow for search termination

@@ -10,6 +10,8 @@ __author__ = "csong2022"
 
 
 class Node:
+    """Tree node."""
+
     def __init__(self, item, parent):
         self.item = item  # data item
         self.parent = parent  # pointer to parent
@@ -23,9 +25,11 @@ class Tree:
         self.root = None
 
     def is_empty(self) -> bool:
+        """Is tree empty?"""
         return self.root is None
 
     def __contains__(self, x):
+        """Does tree contains value?"""
         return self._search(self.root, x) is not None
 
     def _search(self, l: Node, x) -> Node:
@@ -40,6 +44,7 @@ class Tree:
             return self._search(l.right, x)
 
     def insert(self, x) -> None:
+        """Insert value to the tree."""
         self.root = self._insert(self.root, x)
 
     def _insert(self, l: Node, x, parent: Node = None) -> Node:
@@ -91,6 +96,7 @@ class Tree:
         return pred
 
     def delete(self, x):
+        """Delete value."""
         self.root = self._delete(self.root, x)
 
     def _delete(self, t: Node, x) -> Node:

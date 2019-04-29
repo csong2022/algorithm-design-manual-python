@@ -17,6 +17,8 @@ MAXPOLY = 200  # maximum number of points in a polygon
 
 
 class Point:
+    """Point"""
+
     def __init__(self, x: float, y: float):
         self.x = x  # x-coordinat
         self.y = y  # y-coordinate
@@ -26,10 +28,6 @@ class Point:
         if isinstance(other, Point):
             return self.x == other.x and self.y == other.y
         return False
-
-    def __ne__(self, other):
-        """Overrides the default implementation (unnecessary in Python 3)"""
-        return not self.__eq__(other)
 
     def print(self) -> None:
         print("%7.3lf %7.3lf" % (self.x, self.y))
@@ -42,8 +40,18 @@ class Point:
     def __str__(self):
         return "(%lf,%lf)" % (self.x, self.y)
 
+    @staticmethod
+    def distance(a, b) -> float:
+        d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+        return sqrt(d)
+
+    def distance_to(self, other) -> float:
+        return Point.distance(self, other)
+
 
 class Line:
+    """Line"""
+
     def __init__(self, a: float, b: float, c: float):
         self.a = a  # x-coefficient
         self.b = b  # y-coefficient
@@ -55,8 +63,26 @@ class Line:
     def __str__(self):
         return "(a=%7.3lf,b=%7.3lf,c=%7.3lf)" % (self.a, self.b, self.c)
 
+    @staticmethod
+    def parallel_q(l1, l2) -> bool:
+        """Are two lines parallel?"""
+        return abs(l1.a - l2.a) <= EPSILON and abs(l1.b - l2.b) <= EPSILON
+
+    @staticmethod
+    def same_line_q(l1, l2) -> bool:
+        """Are they the same line?"""
+        return Line.parallel_q(l1, l2) and abs(l1.c - l2.c) <= EPSILON
+
+    def __eq__(self, other):
+        """Overrides the default implementation"""
+        if isinstance(other, Line):
+            return Line.same_line_q(self, other)
+        return False
+
 
 class Segment:
+    """Line segment."""
+
     def __init__(self, p1: Point, p2: Point):
         self.p1 = p1  # endpoints of line segment
         self.p2 = p2
@@ -68,6 +94,8 @@ class Segment:
 
 
 class Polygon:
+    """Polygon"""
+
     def __init__(self, p: list, n: int):
         self.p = p  # array of points in polygon
         self.n = n  # number of points in polygon
@@ -77,6 +105,8 @@ class Polygon:
 
 
 class Triangle:
+    """Triangle"""
+
     def __init__(self, a: Point, b: Point, c: Point):
         self.a = a  # point a
         self.b = b  # point b
@@ -100,6 +130,8 @@ class Triangulation:
 
 
 class Circle:
+    """Circle."""
+
     def __init__(self, c: Point, r: float):
         self.c = c  # center of circle
         self.r = r  # radius of circle
@@ -109,6 +141,7 @@ class Circle:
 
 
 def points_to_line(p1: Point, p2: Point) -> Line:
+    """Line pass the two points."""
     if p1.x == p2.x:
         a = 1
         b = 0
@@ -122,26 +155,19 @@ def points_to_line(p1: Point, p2: Point) -> Line:
 
 
 def point_and_slope_to_line(p: Point, m: float) -> Line:
+    """Line pass the point with given slope."""
     a = -m
     b = 1
     c = -(a * p.x + b * p.y)
     return Line(a, b, c)
 
 
-def parallel_q(l1: Line, l2: Line) -> bool:
-    return abs(l1.a - l2.a) <= EPSILON and abs(l1.b - l2.b) <= EPSILON
-
-
-def same_line_q(l1: Line, l2: Line) -> bool:
-    return parallel_q(l1, l2) and abs(l1.c - l2.c) <= EPSILON
-
-
 def intersection_point(l1: Line, l2: Line) -> Point:
-    if same_line_q(l1, l2):
+    if Line.same_line_q(l1, l2):
         print("Warning: Identical lines, all points intersect.")
         return Point(0.0, 0.0)
 
-    if parallel_q(l1, l2):
+    if Line.parallel_q(l1, l2):
         print("Error: Distinct parallel lines do not intersect.")
         return None
 
@@ -169,12 +195,6 @@ def closest_point(p_in: Point, l: Line) -> Point:
 
     perp = point_and_slope_to_line(p_in, 1 / l.a)  # non-degenerate line
     return intersection_point(l, perp)
-
-
-def distance(a: Point, b: Point) -> float:
-    d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
-
-    return sqrt(d)
 
 
 def copy_point(a: Point, b: Point) -> None:
@@ -206,13 +226,13 @@ def segments_intersect(s1: Segment, s2: Segment) -> bool:
     l1 = points_to_line(s1.p1, s1.p2)
     l2 = points_to_line(s2.p1, s2.p2)
 
-    if same_line_q(l1, l2):  # overlapping or disjoint segments
+    if Line.same_line_q(l1, l2):  # overlapping or disjoint segments
         return point_in_box(s1.p1, s2.p1, s2.p2) or \
                point_in_box(s1.p2, s2.p1, s2.p2) or \
                point_in_box(s2.p1, s1.p1, s1.p2) or \
                point_in_box(s2.p2, s1.p1, s1.p2)
 
-    if parallel_q(l1, l2):
+    if Line.parallel_q(l1, l2):
         return False
 
     p = intersection_point(l1, l2)

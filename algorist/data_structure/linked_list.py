@@ -10,6 +10,7 @@ __author__ = "csong2022"
 
 
 class Node:
+    """List node."""
     def __init__(self, item, _next=None):
         self.item = item  # data item
         self.next = _next  # point to successor
@@ -20,9 +21,11 @@ class List:
         self.head = None
 
     def is_empty(self) -> bool:
+        """Is list empty?"""
         return self.head is None
 
     def __contains__(self, x):
+        """Check if list contains the value."""
         return self.search(x) is not None
 
     def search(self, x) -> Node:
@@ -34,9 +37,11 @@ class List:
         return p
 
     def insert(self, x) -> None:
+        """Insert value."""
         self.head = Node(x, self.head)
 
     def delete(self, x) -> None:
+        """Delete value."""
         pred = None
         p = self.head
 
@@ -52,9 +57,7 @@ class List:
             p.next = None
 
     def __iter__(self):
-        """
-        Iterate over the linked list using generator.
-        """
+        """Iterate over the linked list in LIFO order."""
         current = self.head
         while current is not None:
             yield current.item

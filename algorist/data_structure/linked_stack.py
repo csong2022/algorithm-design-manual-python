@@ -10,6 +10,8 @@ __author__ = "csong2022"
 
 
 class Node:
+    """Stack node."""
+
     def __init__(self, item, _next=None):
         self.item = item  # data item
         self.next = _next  # point to successor
@@ -25,10 +27,12 @@ class Stack:
         self.n = 0  # number of stack elements
 
     def push(self, x) -> None:
+        """Push value into the stack."""
         self.first = Node(x, self.first)
         self.n += 1
 
     def pop(self):
+        """Pop most recent item."""
         if self.is_empty():
             raise IndexError('Stack underflow')
         else:
@@ -38,9 +42,11 @@ class Stack:
             return x
 
     def is_empty(self) -> bool:
+        """is stack empty?"""
         return self.n == 0
 
     def __iter__(self):
+        """Iterate over the stack in LIFO order."""
         current = self.first
         while current is not None:
             yield current.item

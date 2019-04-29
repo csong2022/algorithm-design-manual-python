@@ -10,7 +10,7 @@ __author__ = "csong2022"
 
 from math import sqrt, acos
 
-from algorist.geometry.geometry import points_to_line, closest_point, distance, point_in_box, Point
+from algorist.geometry.geometry import points_to_line, closest_point, point_in_box, Point
 
 
 def superman(s: Point, t: Point, c: list, ncircles: int) -> None:
@@ -29,7 +29,7 @@ def superman(s: Point, t: Point, c: list, ncircles: int) -> None:
 
     for i in range(1, ncircles + 1):
         close = closest_point(c[i].c, line)
-        d = distance(c[i].c, close)
+        d = c[i].c.distance_to(close)
 
         if 0 <= d < c[i].r and point_in_box(close, s, t):
             xray += 2 * sqrt(c[i].r * c[i].r - d * d)
@@ -38,6 +38,6 @@ def superman(s: Point, t: Point, c: list, ncircles: int) -> None:
             print("circle %d (%7.3lf,%7.3lf,%7.3lf) is %7.3lf away from l, xray=%7.3lf around=%7.3lf angle=%7.3lf." %
                   (i, c[i].c.x, c[i].c.y, c[i].r, d, xray, around, angle))
 
-    travel = distance(s, t) - xray + around
+    travel = s.distance_to(t) - xray + around
     print("Superman sees through %7.3lf units, and flies %7.3lf units" %
           (xray, travel))

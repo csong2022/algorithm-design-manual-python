@@ -11,7 +11,7 @@ __author__ = "csong2022"
 import types
 from functools import cmp_to_key
 
-from algorist.geometry.geometry import collinear, distance, ccw, Polygon, cw, Point
+from algorist.geometry.geometry import collinear, ccw, Polygon, cw, Point, Line
 
 
 # Compute convex hulls of points in the plane using the
@@ -84,7 +84,7 @@ def leftlower(p1: Point, p2: Point) -> int:
 def smaller_angle(first_point: Point) -> types.FunctionType:
     def _smaller_angle(p1: Point, p2: Point) -> int:
         if collinear(first_point, p1, p2):
-            if distance(first_point, p1) <= distance(first_point, p2):
+            if first_point.distance_to(p1) <= first_point.distance_to(p2):
                 return -1
             else:
                 return 1
