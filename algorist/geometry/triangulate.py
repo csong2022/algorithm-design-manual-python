@@ -9,7 +9,7 @@ Translate from triangulate.c.
 
 __author__ = "csong2022"
 
-from algorist.geometry.geometry import Polygon, Triangulation, Triangle, cw, Point, triangle_area
+from algorist.geometry.geometry import Polygon, Triangulation, Triangle, Point
 
 
 def triangulate(p: Polygon) -> Triangulation:
@@ -32,7 +32,7 @@ def triangulate(p: Polygon) -> Triangulation:
 def ear_q(i: int, j: int, k: int, p: Polygon) -> bool:
     t = Triangle(p.p[i], p.p[j], p.p[k])
 
-    if cw(t.a, t.b, t.c):
+    if Triangle.cw(t.a, t.b, t.c):
         return False
 
     for m in range(p.n):
@@ -44,7 +44,7 @@ def ear_q(i: int, j: int, k: int, p: Polygon) -> bool:
 
 
 def point_in_triangle(p: Point, t: Triangle) -> bool:
-    return not cw(t.a, t.b, p) and not cw(t.b, t.c, p) and not cw(t.c, t.a, p)
+    return not Triangle.cw(t.a, t.b, p) and not Triangle.cw(t.b, t.c, p) and not Triangle.cw(t.c, t.a, p)
 
 
 def area_triangulation(p: Polygon) -> float:
@@ -52,7 +52,7 @@ def area_triangulation(p: Polygon) -> float:
 
     total = 0.0
     for i in range(t.n):
-        total += triangle_area(p.p[t.t[i][0]], p.p[t.t[i][1]], p.p[t.t[i][2]])
+        total += Triangle.triangle_area(p.p[t.t[i][0]], p.p[t.t[i][1]], p.p[t.t[i][2]])
 
     return total
 

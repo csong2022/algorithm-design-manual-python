@@ -11,7 +11,7 @@ __author__ = "csong2022"
 import types
 from functools import cmp_to_key
 
-from algorist.geometry.geometry import collinear, ccw, Polygon, cw, Point, Line
+from algorist.geometry.geometry import Polygon, Point, Triangle
 
 
 # Compute convex hulls of points in the plane using the
@@ -40,10 +40,10 @@ def convex_hull(_in: list, n: int) -> Polygon:
     i = 2
 
     while i <= n:
-        if cw(points[top - 1], points[top], _in[i]):
+        if Triangle.cw(points[top - 1], points[top], _in[i]):
             top -= 1  # top not on hull
         else:
-            if not collinear(points[top - 1], points[top], _in[i]):
+            if not Triangle.collinear(points[top - 1], points[top], _in[i]):
                 top += 1
             points[top] = _in[i]
             i += 1
@@ -83,13 +83,13 @@ def leftlower(p1: Point, p2: Point) -> int:
 
 def smaller_angle(first_point: Point) -> types.FunctionType:
     def _smaller_angle(p1: Point, p2: Point) -> int:
-        if collinear(first_point, p1, p2):
+        if Triangle.collinear(first_point, p1, p2):
             if first_point.distance_to(p1) <= first_point.distance_to(p2):
                 return -1
             else:
                 return 1
 
-        if ccw(first_point, p1, p2):
+        if Triangle.ccw(first_point, p1, p2):
             return -1
         else:
             return 1
