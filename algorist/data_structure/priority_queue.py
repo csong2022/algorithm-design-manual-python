@@ -29,7 +29,7 @@ class PriorityQueue:
         if parent == -1:  # at root of heap, no parent
             return
 
-        if self.q[parent] > self.q[p]:
+        if self.q[p] < self.q[parent]:
             self.swap(p, parent)
             self.bubble_up(parent)
 
@@ -40,7 +40,7 @@ class PriorityQueue:
 
         for i in range(2):
             if c + i <= self.n:
-                if self.q[min_index] > self.q[c + i]:
+                if self.q[c + i] < self.q[min_index]:
                     min_index = c + i
 
         if min_index != p:
