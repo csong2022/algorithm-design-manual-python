@@ -62,9 +62,9 @@ def partition(s: list, l: int, h: int, key=None) -> int:
     return first_high
 
 
-def heapsort(s: list, n: int) -> None:
+def heapsort(s: list, n: int, key=None) -> None:
     """Heap sort."""
-    q = PriorityQueue.make_heap(s, n)  # heap for heapsort
+    q = PriorityQueue.make_heap(s, n, key)  # heap for heapsort
 
     for i in range(0, n):
         s[i] = q.extract_min()

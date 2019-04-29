@@ -9,11 +9,19 @@ Translate from priority_queue.h, priority_queue.c.
 __author__ = "csong2022"
 
 
+def less(a, b, key=None):
+    if key is None:
+        return a < b
+    else:
+        return key(a) < key(b)
+
+
 class PriorityQueue:
 
-    def __init__(self):
+    def __init__(self, key=None):
         self.q = [None]  # body of queue
         self.n = 0  # number of queue elements
+        self.key = key
 
     def _parent(self, n: int) -> int:
         """parent index."""
@@ -29,7 +37,7 @@ class PriorityQueue:
         if parent == -1:  # at root of heap, no parent
             return
 
-        if self.q[p] < self.q[parent]:
+        if less(self.q[p], self.q[parent], self.key):
             self.swap(p, parent)
             self.bubble_up(parent)
 
@@ -40,7 +48,7 @@ class PriorityQueue:
 
         for i in range(2):
             if c + i <= self.n:
-                if self.q[c + i] < self.q[min_index]:
+                if less(self.q[c + i], self.q[min_index], self.key):
                     min_index = c + i
 
         if min_index != p:
@@ -84,9 +92,9 @@ class PriorityQueue:
         return self.n
 
     @staticmethod
-    def make_heap(s: list, n: int):
+    def make_heap(s: list, n: int, key=None):
         """Construct heap from list"""
-        q = PriorityQueue()
+        q = PriorityQueue(key)
 
         for i in range(0, n):
             q.q.append(s[i])
@@ -99,9 +107,9 @@ class PriorityQueue:
         return q
 
     @staticmethod
-    def make_heap1(s: list, n: int):
+    def make_heap1(s: list, n: int, key=None):
         """Construct heap from list"""
-        q = PriorityQueue()
+        q = PriorityQueue(key)
 
         for i in range(0, n):
             q.insert(s[i])
