@@ -171,15 +171,6 @@ class Segment:
         self.p2 = p2
 
     @staticmethod
-    def points_to_segment(a: Point, b: Point):
-        """Create line segment from two end points."""
-        return Segment(a, b)
-
-    @staticmethod
-    def segment_to_points(s) -> tuple:
-        return s.p1, s.p2
-
-    @staticmethod
     def segments_intersect(s1, s2) -> bool:
         l1 = Line.points_to_line(s1.p1, s1.p2)
         l2 = Line.points_to_line(s2.p1, s2.p2)
