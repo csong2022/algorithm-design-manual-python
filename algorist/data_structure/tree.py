@@ -9,6 +9,13 @@ Translate from tree.h, tree-demo.c.
 __author__ = "csong2022"
 
 
+def less(a, b, key=None):
+    if key is None:
+        return a < b
+    else:
+        return key(a) < key(b)
+
+
 class Node:
     """Tree node."""
 
@@ -21,8 +28,9 @@ class Node:
 
 class Tree:
 
-    def __init__(self):
+    def __init__(self, key=None):
         self.root = None
+        self.key = key
 
     def is_empty(self) -> bool:
         """Is tree empty?"""
@@ -36,12 +44,12 @@ class Tree:
         if l is None:
             return None
 
-        if x == l.item:
-            return l
-        elif x < l.item:
+        if less(x , l.item, self.key):
             return self._search(l.left, x)
-        else:
+        elif less(l.item , x, self.key):
             return self._search(l.right, x)
+        else:
+            return l
 
     def insert(self, x) -> None:
         """Insert value to the tree."""
@@ -51,9 +59,9 @@ class Tree:
         if l is None:
             return Node(x, parent)
 
-        if x < l.item:
+        if less(x , l.item, self.key):
             l.left = self._insert(l.left, x, l)
-        elif x > l.item:
+        elif less(l.item , x, self.key):
             l.right = self._insert(l.right, x, l)
         return l
 

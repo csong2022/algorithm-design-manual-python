@@ -6,7 +6,8 @@ from tests.algorist.test.test_engine import execute
 
 class TestTreeDemo(TestCase):
     def process(self, input):
-        l = Tree()
+        identity = lambda x: x
+        l = Tree(key=identity)
 
         for line in input:
             tokens = line[:-1].split(' ')
