@@ -103,12 +103,6 @@ class Line:
         c = -(a * p.x + b * p.y)
         return Line(a, b, c)
 
-    def print(self) -> None:
-        print(str(self))
-
-    def __str__(self):
-        return "(a=%7.3lf,b=%7.3lf,c=%7.3lf)" % (self.a, self.b, self.c)
-
     @staticmethod
     def parallel_q(l1, l2) -> bool:
         """Are two lines parallel?"""
@@ -119,16 +113,10 @@ class Line:
         """Are they the same line?"""
         return Line.parallel_q(l1, l2) and abs(l1.c - l2.c) <= EPSILON
 
-    def __eq__(self, other):
-        """Overrides the default implementation"""
-        if isinstance(other, Line):
-            return Line.same_line_q(self, other)
-        return False
-
     @staticmethod
     def intersection_point(l1, l2) -> Point:
         """Intersection point of two lines."""
-        if Line.same_line_q(l1, l2):
+        if l1 == l2:
             print("Warning: Identical lines, all points intersect.")
             return Point(0.0, 0.0)
 
@@ -162,6 +150,18 @@ class Line:
         perp = Line.point_and_slope_to_line(p_in, 1 / l.a)  # non-degenerate line
         return Line.intersection_point(l, perp)
 
+    def __eq__(self, other):
+        """Overrides the default implementation"""
+        if isinstance(other, Line):
+            return Line.same_line_q(self, other)
+        return False
+
+    def print(self) -> None:
+        print(str(self))
+
+    def __str__(self):
+        return "(a=%7.3lf,b=%7.3lf,c=%7.3lf)" % (self.a, self.b, self.c)
+
 
 class Segment:
     """Line segment."""
@@ -184,7 +184,7 @@ class Segment:
         l1 = Line.points_to_line(s1.p1, s1.p2)
         l2 = Line.points_to_line(s2.p1, s2.p2)
 
-        if Line.same_line_q(l1, l2):  # overlapping or disjoint segments
+        if l1 == l2:  # overlapping or disjoint segments
             return s1.p1.point_in_box(s2.p1, s2.p2) or \
                    s1.p2.point_in_box(s2.p1, s2.p2) or \
                    s2.p1.point_in_box(s1.p1, s1.p2) or \
