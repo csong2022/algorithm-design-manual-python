@@ -15,19 +15,6 @@ class Node:
         self.next = _next  # point to successor
 
 
-class StackIterator:
-    def __init__(self, first: Node):
-        self.current = first
-
-    def __next__(self):
-        if self.current is None:
-            raise StopIteration
-        else:
-            x = self.current.item
-            self.current = self.current.next
-            return x
-
-
 class Stack:
     """
     Implementation of a LIFO stack abstract data type.
@@ -54,7 +41,10 @@ class Stack:
         return self.n == 0
 
     def __iter__(self):
-        return StackIterator(self.first)
+        current = self.first
+        while current is not None:
+            yield current.item
+            current = current.next
 
     def print(self) -> None:
         for x in self:

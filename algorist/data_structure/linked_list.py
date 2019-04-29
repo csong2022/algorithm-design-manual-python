@@ -15,19 +15,6 @@ class Node:
         self.next = _next  # point to successor
 
 
-class ListIterator:
-    def __init__(self, head: Node):
-        self.current = head
-
-    def __next__(self):
-        if self.current is None:
-            raise StopIteration
-        else:
-            x = self.current.item
-            self.current = self.current.next
-            return x
-
-
 class List:
     def __init__(self):
         self.head = None
@@ -65,7 +52,13 @@ class List:
             p.next = None
 
     def __iter__(self):
-        return ListIterator(self.head)
+        """
+        Iterate over the linked list using generator.
+        """
+        current = self.head
+        while current is not None:
+            yield current.item
+            current = current.next
 
     def print(self) -> None:
         for x in self:

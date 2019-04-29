@@ -15,19 +15,6 @@ class Node:
         self.next = _next  # point to successor
 
 
-class QueueIterator:
-    def __init__(self, first: Node):
-        self.current = first
-
-    def __next__(self):
-        if self.current is None:
-            raise StopIteration
-        else:
-            x = self.current.item
-            self.current = self.current.next
-            return x
-
-
 class Queue:
     def __init__(self):
         self.count = 0  # number of queue elements
@@ -64,7 +51,10 @@ class Queue:
         return self.count == 0
 
     def __iter__(self):
-        return QueueIterator(self.first)
+        current = self.first
+        while current is not None:
+            yield current.item
+            current = current.next
 
     def print(self) -> None:
         print(' '.join(str(x) for x in self))
