@@ -9,7 +9,7 @@ Translate from triangulate.c.
 
 __author__ = "csong2022"
 
-from algorist.geometry.geometry import Polygon, Triangulation, Triangle, Point
+from algorist.geometry.geometry import Polygon, Triangulation, Triangle
 
 
 def triangulate(p: Polygon) -> Triangulation:
@@ -37,14 +37,10 @@ def ear_q(i: int, j: int, k: int, p: Polygon) -> bool:
 
     for m in range(p.n):
         if m != i and m != j and m != k:
-            if point_in_triangle(p.p[m], t):
+            if t.point_in_triangle(p.p[m]):
                 return False
 
     return True
-
-
-def point_in_triangle(p: Point, t: Triangle) -> bool:
-    return not Triangle.cw(t.a, t.b, p) and not Triangle.cw(t.b, t.c, p) and not Triangle.cw(t.c, t.a, p)
 
 
 def area_triangulation(p: Polygon) -> float:

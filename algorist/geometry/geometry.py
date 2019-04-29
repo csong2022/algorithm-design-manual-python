@@ -233,6 +233,11 @@ class Triangle:
         self.b = b  # point b
         self.c = c  # point c
 
+    def point_in_triangle(self, p: Point) -> bool:
+        return not Triangle.cw(self.a, self.b, p) and \
+               not Triangle.cw(self.b, self.c, p) and \
+               not Triangle.cw(self.c, self.a, p)
+
     @staticmethod
     def signed_triangle_area(a: Point, b: Point, c: Point) -> float:
         return (a.x * b.y - a.y * b.x + a.y * c.x - a.x * c.y + b.x * c.y - c.x * b.y) / 2.0
