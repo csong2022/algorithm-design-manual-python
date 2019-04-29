@@ -9,11 +9,12 @@ class TestTreeDemo(TestCase):
         l = Tree()
 
         for line in input:
-            tokens = line.split(' ')
+            tokens = line[:-1].split(' ')
 
             c = tokens[0].lower()
             if c == 'p':
                 l.print()
+                print()
             elif c == 'i':
                 d = int(tokens[1])
                 print("new item: %d" % d)
@@ -29,6 +30,10 @@ class TestTreeDemo(TestCase):
                 print(" deleting item %d" % d)
                 l.delete(d)
                 l.print()
+                print()
 
-    def test(self):
+    def test_list(self):
         execute(self, "list-in", "treelist-out")
+
+    def test_t1(self):
+        execute(self, "t1.in", "t1.out")

@@ -63,7 +63,7 @@ class Tree:
     def _print(self, l) -> None:
         if l is not None:
             self._print(l.left)
-            print("%s " % l.item)
+            print("%s " % l.item, end='')
             self._print(l.right)
 
     def _successor_descendant(self, t: Node) -> Node:
@@ -135,5 +135,5 @@ class Tree:
 
         new_key = p.item  # deal with simpler case of deletion
         self._delete(t, p.item)
-        d.itm = new_key
+        d.item = new_key
         return t
