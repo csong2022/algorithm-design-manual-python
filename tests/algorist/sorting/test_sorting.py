@@ -11,23 +11,24 @@ NELEM = 100
 class TestSorting(TestCase):
 
     def process(self):
+        identity = lambda x: x
         s = list(range(NELEM))
 
         self.init_arr(s)
-        insertion_sort(s, len(s))
-        self.assertTrue(is_sorted(s))
+        insertion_sort(s, len(s), key=identity)
+        self.assertTrue(is_sorted(s, key=identity))
         print("\n\nInsertion sort: ")
         self.print_arr(s)
 
         self.init_arr(s)
-        selection_sort(s, len(s))
-        self.assertTrue(is_sorted(s))
+        selection_sort(s, len(s), key=identity)
+        self.assertTrue(is_sorted(s, key=identity))
         print("\n\nSelection sort: ")
         self.print_arr(s)
 
         self.init_arr(s)
-        quicksort(s, 0, len(s) - 1)
-        self.assertTrue(is_sorted(s))
+        quicksort(s, 0, len(s) - 1, key=identity)
+        self.assertTrue(is_sorted(s, key=identity))
         print("\n\nQuicksort: ")
         self.print_arr(s)
 
@@ -38,8 +39,8 @@ class TestSorting(TestCase):
         self.print_arr(s)
 
         self.init_arr(s)
-        mergesort(s, 0, len(s) - 1)
-        self.assertTrue(is_sorted(s))
+        mergesort(s, 0, len(s) - 1, key=identity)
+        self.assertTrue(is_sorted(s, key=identity))
         print()
 
         for i in range(len(s)):
