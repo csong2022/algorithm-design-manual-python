@@ -17,12 +17,14 @@ class SetUnion:
         self.size = [1] * (n + 1)  # number of elements in set
 
     def find(self, x: int) -> int:
+        """Find root of the set."""
         if self.p[x] == x:
             return x
         else:
             return self.find(self.p[x])
 
     def union_sets(self, s1: int, s2: int) -> None:
+        """Merge two sets."""
         r1 = self.find(s1)
         r2 = self.find(s2)
 
@@ -39,6 +41,7 @@ class SetUnion:
             self.p[r1] = r2
 
     def same_component(self, s1: int, s2: int) -> bool:
+        """Do two elements belongs to the same component?"""
         return self.find(s1) == self.find(s2)
 
     def print(self) -> None:

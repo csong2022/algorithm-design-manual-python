@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from algorist.geometry.geometry import read_point, read_circle
+from algorist.geometry.geometry import Circle, Point
 from algorist.geometry.superman import superman
 from tests.algorist.test.test_engine import execute
 
@@ -8,15 +8,15 @@ from tests.algorist.test.test_engine import execute
 class TestSuperman(TestCase):
 
     def process(self, input):
-        s = read_point(input)
-        t = read_point(input)
+        s = Point.read_point(input)
+        t = Point.read_point(input)
 
         ncircles = int(input.readline()[:-1])
 
         c = [None]
 
         for i in range(1, ncircles + 1):
-            c.append(read_circle(input))
+            c.append(Circle.read_circle(input))
 
         s.print()
         t.print()

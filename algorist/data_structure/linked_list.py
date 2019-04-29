@@ -10,22 +10,10 @@ __author__ = "csong2022"
 
 
 class Node:
+    """List node."""
     def __init__(self, item, _next=None):
         self.item = item  # data item
         self.next = _next  # point to successor
-
-
-class ListIterator:
-    def __init__(self, head: Node):
-        self.current = head
-
-    def __next__(self):
-        if self.current is None:
-            raise StopIteration
-        else:
-            x = self.current.item
-            self.current = self.current.next
-            return x
 
 
 class List:
@@ -33,9 +21,11 @@ class List:
         self.head = None
 
     def is_empty(self) -> bool:
+        """Is list empty?"""
         return self.head is None
 
     def __contains__(self, x):
+        """Check if list contains the value."""
         return self.search(x) is not None
 
     def search(self, x) -> Node:
@@ -47,9 +37,11 @@ class List:
         return p
 
     def insert(self, x) -> None:
+        """Insert value."""
         self.head = Node(x, self.head)
 
     def delete(self, x) -> None:
+        """Delete value."""
         pred = None
         p = self.head
 
@@ -65,7 +57,11 @@ class List:
             p.next = None
 
     def __iter__(self):
-        return ListIterator(self.head)
+        """Iterate over the linked list in LIFO order."""
+        current = self.head
+        while current is not None:
+            yield current.item
+            current = current.next
 
     def print(self) -> None:
         for x in self:

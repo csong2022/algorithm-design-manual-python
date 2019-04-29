@@ -1,13 +1,13 @@
 from unittest import TestCase
 
 from algorist.geometry.convex_hull import convex_hull
-from algorist.geometry.geometry import read_points
+from algorist.geometry.geometry import Point
 from tests.algorist.test.test_engine import execute
 
 
 class TestConvexHull(TestCase):
     def process(self, input):
-        points = read_points(input)
+        points = Point.read_points(input)
 
         polygon = convex_hull(points, len(points))
         polygon.print()

@@ -10,22 +10,11 @@ __author__ = "csong2022"
 
 
 class Node:
+    """Queue node."""
+
     def __init__(self, item, _next=None):
         self.item = item  # data item
         self.next = _next  # point to successor
-
-
-class QueueIterator:
-    def __init__(self, first: Node):
-        self.current = first
-
-    def __next__(self):
-        if self.current is None:
-            raise StopIteration
-        else:
-            x = self.current.item
-            self.current = self.current.next
-            return x
 
 
 class Queue:
@@ -35,6 +24,7 @@ class Queue:
         self.last = None  # last element
 
     def enqueue(self, x) -> None:
+        """Enqueue"""
         old_last = self.last
         self.last = Node(x)
         if self.is_empty():
@@ -44,6 +34,7 @@ class Queue:
         self.count += 1
 
     def dequeue(self):
+        """Dequeue"""
         if self.is_empty():
             raise IndexError('Queue underflow')
         else:
@@ -55,16 +46,22 @@ class Queue:
             return x
 
     def headq(self):
+        """Head of the queue."""
         if self.is_empty():
             raise IndexError('Queue empty')
         else:
             return self.first.item
 
     def is_empty(self) -> bool:
+        """Is queue empty?"""
         return self.count == 0
 
     def __iter__(self):
-        return QueueIterator(self.first)
+        """Iterate through the queue in FIFO sequence."""
+        current = self.first
+        while current is not None:
+            yield current.item
+            current = current.next
 
     def print(self) -> None:
         print(' '.join(str(x) for x in self))

@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from algorist.geometry.geometry import read_points, Polygon
+from algorist.geometry.geometry import Polygon, Point
 from algorist.geometry.triangulate import area_triangulation, area
 from tests.algorist.test.test_engine import execute
 
 
 class TestTriangulate(TestCase):
     def process(self, input):
-        points = read_points(input)
+        points = Point.read_points(input)
 
         p = Polygon(points, len(points))
 

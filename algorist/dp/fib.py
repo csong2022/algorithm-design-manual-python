@@ -8,12 +8,12 @@ Translate from fib.c.
 
 __author__ = "csong2022"
 
-
 MAXN = 45  # largest n or m
 UNKNOWN = -1  # contents denote an empty cell
 
 
 def fib_r(n: int) -> int:
+    """Recursive implementation of Fibonacci number."""
     if n == 0:
         return 0
     if n == 1:
@@ -23,6 +23,7 @@ def fib_r(n: int) -> int:
 
 
 def fib_c(n: int, f: list) -> int:
+    """Recursive implementation with memoization"""
     if f[n] == UNKNOWN:
         f[n] = fib_c(n - 1, f) + fib_c(n - 2, f)
 
@@ -41,6 +42,7 @@ def fib_c_driver(n: int) -> int:
 
 
 def fib_dp(n: int) -> int:
+    """Dynamic programming implementation, storing all intermediate results."""
     f = [UNKNOWN] * (MAXN + 1)
     f[0] = 0
     f[1] = 1
@@ -52,6 +54,7 @@ def fib_dp(n: int) -> int:
 
 
 def fib_dp2(n: int) -> int:
+    """Dynamic programming implementation with minimal memory footprint."""
     back1 = 1  # last two values of f[n]
     back2 = 0
 

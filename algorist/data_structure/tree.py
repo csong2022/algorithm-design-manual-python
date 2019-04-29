@@ -9,7 +9,16 @@ Translate from tree.h, tree-demo.c.
 __author__ = "csong2022"
 
 
+def less(a, b, key=None):
+    if key is None:
+        return a < b
+    else:
+        return key(a) < key(b)
+
+
 class Node:
+    """Tree node."""
+
     def __init__(self, item, parent):
         self.item = item  # data item
         self.parent = parent  # pointer to parent
@@ -19,36 +28,40 @@ class Node:
 
 class Tree:
 
-    def __init__(self):
+    def __init__(self, key=None):
         self.root = None
+        self.key = key
 
     def is_empty(self) -> bool:
+        """Is tree empty?"""
         return self.root is None
 
     def __contains__(self, x):
+        """Does tree contains value?"""
         return self._search(self.root, x) is not None
 
     def _search(self, l: Node, x) -> Node:
         if l is None:
             return None
 
-        if x == l.item:
-            return l
-        elif x < l.item:
+        if less(x , l.item, self.key):
             return self._search(l.left, x)
-        else:
+        elif less(l.item , x, self.key):
             return self._search(l.right, x)
+        else:
+            return l
 
     def insert(self, x) -> None:
+        """Insert value to the tree."""
         self.root = self._insert(self.root, x)
 
     def _insert(self, l: Node, x, parent: Node = None) -> Node:
         if l is None:
             return Node(x, parent)
 
-        if x < l.item:
+        if less(x , l.item, self.key):
             l.left = self._insert(l.left, x, l)
-        elif x > l.item:
+        elif less(l.item , x, self.key):
             l.right = self._insert(l.right, x, l)
         return l
 
@@ -58,7 +71,7 @@ class Tree:
     def _print(self, l) -> None:
         if l is not None:
             self._print(l.left)
-            print("%s " % l.item)
+            print("%s " % l.item, end='')
             self._print(l.right)
 
     def _successor_descendant(self, t: Node) -> Node:
@@ -91,6 +104,7 @@ class Tree:
         return pred
 
     def delete(self, x):
+        """Delete value."""
         self.root = self._delete(self.root, x)
 
     def _delete(self, t: Node, x) -> Node:
@@ -129,5 +143,5 @@ class Tree:
 
         new_key = p.item  # deal with simpler case of deletion
         self._delete(t, p.item)
-        d.itm = new_key
+        d.item = new_key
         return t
