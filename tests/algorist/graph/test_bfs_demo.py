@@ -30,7 +30,7 @@ class BFSDemoTest(TestCase):
         print()
         for i in range(1, g.nvertices + 1):
             path = bfs.find_path(1, i)
-            path.print()
+            print(' '.join(str(i) for i in path))
 
     def test(self):
         execute(self, "grid", "grid-bfs-demo-out")

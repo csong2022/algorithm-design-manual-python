@@ -47,7 +47,7 @@ class DFSDemoTest(TestCase):
         print()
         for i in range(1, g.nvertices + 1):
             path = dfs.find_path(1, i)
-            print(path, end=' ')
+            print(' '.join(str(i) for i in path))
 
     def test(self):
         execute(self, "grid", "grid-dfs-demo-out")
