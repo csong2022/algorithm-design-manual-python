@@ -21,7 +21,7 @@ class PriorityQueue:
     def __init__(self, key=None):
         self.q = [None]  # body of queue
         self.n = 0  # number of queue elements
-        self.key = key
+        self.key = key  # key function for comparison.
 
     def _parent(self, n: int) -> int:
         """parent index."""

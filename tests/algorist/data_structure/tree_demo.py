@@ -4,7 +4,7 @@ from algorist.data_structure.tree import Tree
 from tests.algorist.test.test_engine import execute
 
 
-class TreeDemoTest(TestCase):
+class TestTreeDemo(TestCase):
     def process(self, input):
         l = Tree()
 
