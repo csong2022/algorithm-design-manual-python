@@ -42,13 +42,18 @@ class Point:
 
         return p
 
-    def print(self) -> None:
-        print("%7.3lf %7.3lf" % (self.x, self.y))
+    def distance_to(self, other) -> float:
+        return Point.distance(self, other)
 
     @staticmethod
-    def print_points(p: list, n: int) -> None:
-        for i in range(n):
-            print(str(p[i]))
+    def distance(a, b) -> float:
+        d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+        return sqrt(d)
+
+    def point_in_box(self, b1, b2) -> bool:
+        """Is point in box?"""
+        return min(b1.x, b2.x) <= self.x <= max(b1.x, b2.x) and \
+               min(b1.y, b2.y) <= self.y <= max(b1.y, b2.y)
 
     def __eq__(self, other):
         """Overrides the default implementation"""
@@ -59,29 +64,13 @@ class Point:
     def __str__(self):
         return "(%lf,%lf)" % (self.x, self.y)
 
-    @staticmethod
-    def distance(a, b) -> float:
-        d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
-        return sqrt(d)
-
-    def distance_to(self, other) -> float:
-        return Point.distance(self, other)
-
-    def point_in_box(self, b1, b2) -> bool:
-        """Is point in box?"""
-        return min(b1.x, b2.x) <= self.x <= max(b1.x, b2.x) and \
-               min(b1.y, b2.y) <= self.y <= max(b1.y, b2.y)
+    def print(self) -> None:
+        print("%7.3lf %7.3lf" % (self.x, self.y))
 
     @staticmethod
-    def copy_point(a, b) -> None:
-        b.x, b.y = a.x, a.y
-
-    @staticmethod
-    def swap_point(a, b) -> None:
-        c = Point(0, 0)
-        Point.copy_point(a, c)
-        Point.copy_point(b, a)
-        Point.copy_point(c, b)
+    def print_points(p: list, n: int) -> None:
+        for i in range(n):
+            print(str(p[i]))
 
 
 class Line:
