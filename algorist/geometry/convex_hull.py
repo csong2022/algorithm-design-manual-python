@@ -5,6 +5,7 @@ Compute convex hulls of points in the plane using the Gries/Graham scan algorith
 
 Translate from convex-hull.c.
 """
+from algorist.sorting.sorting import quicksort
 
 __author__ = "csong2022"
 
@@ -28,7 +29,8 @@ def convex_hull(_in: list, n: int) -> Polygon:
 
     first_point = _in[0]  # first hull point
 
-    _in[1: n] = sorted(_in[1: n], key=cmp_to_key(smaller_angle(first_point)))
+    # _in[1: n] = sorted(_in[1: n], key=cmp_to_key(smaller_angle(first_point)))
+    quicksort(_in, 1, n - 1, key=cmp_to_key(smaller_angle(first_point)))
 
     points = [Point(0, 0)] * (n + 1)  # convex hull points
     points[0] = first_point
@@ -52,7 +54,8 @@ def convex_hull(_in: list, n: int) -> Polygon:
 
 
 def sort_and_remove_duplicates(points: list, n: int) -> int:
-    points[0: n] = sorted(points[0: n], key=cmp_to_key(leftlower))
+    # points[0: n] = sorted(points[0: n], key=cmp_to_key(leftlower))
+    quicksort(points, 0, n - 1, key=cmp_to_key(leftlower))
     oldn = n  # number of points before deletion
     hole = 1  # index marked for potential deletion
 
