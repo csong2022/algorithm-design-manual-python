@@ -17,6 +17,7 @@ def swap(s: list, i: int, j: int) -> None:
 
 
 def insertion_sort(s: list, n: int) -> None:
+    """Insertion sort."""
     for i in range(1, n):
         j = i
         while j > 0 and s[j] < s[j - 1]:
@@ -25,6 +26,7 @@ def insertion_sort(s: list, n: int) -> None:
 
 
 def selection_sort(s: list, n: int) -> None:
+    """Selection sort."""
     for i in range(n):
         min_index = i
         for j in range(i + 1, n):
@@ -34,6 +36,7 @@ def selection_sort(s: list, n: int) -> None:
 
 
 def quicksort(s: list, l: int, h: int) -> None:
+    """Quick sort."""
     if h > l:
         p = partition(s, l, h)
         quicksort(s, l, p - 1)
@@ -53,6 +56,7 @@ def partition(s: list, l: int, h: int) -> int:
 
 
 def heapsort(s: list, n: int) -> None:
+    """Heap sort."""
     q = PriorityQueue.make_heap(s, n)  # heap for heapsort
 
     for i in range(0, n):
@@ -60,6 +64,7 @@ def heapsort(s: list, n: int) -> None:
 
 
 def binary_search(s: list, key, low: int, high: int) -> int:
+    """Binary search."""
     if low > high:  # key not found
         return -1
 
@@ -73,6 +78,7 @@ def binary_search(s: list, key, low: int, high: int) -> int:
 
 
 def mergesort(s: list, low: int, high: int) -> None:
+    """Merge sort."""
     if low < high:
         aux = s[:]
         _mergesort(s, aux, low, high)
@@ -109,4 +115,5 @@ def _merge(s: list, aux: list, low: int, middle: int, high: int) -> None:
 
 
 def is_sorted(s: list) -> bool:
+    """Test if list is sorted?"""
     return all(s[i] <= s[i + 1] for i in range(len(s) - 1))
