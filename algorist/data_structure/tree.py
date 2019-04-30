@@ -44,9 +44,9 @@ class Tree:
         if l is None:
             return None
 
-        if less(x , l.item, self.key):
+        if less(x, l.item, self.key):
             return self._search(l.left, x)
-        elif less(l.item , x, self.key):
+        elif less(l.item, x, self.key):
             return self._search(l.right, x)
         else:
             return l
@@ -59,9 +59,9 @@ class Tree:
         if l is None:
             return Node(x, parent)
 
-        if less(x , l.item, self.key):
+        if less(x, l.item, self.key):
             l.left = self._insert(l.left, x, l)
-        elif less(l.item , x, self.key):
+        elif less(l.item, x, self.key):
             l.right = self._insert(l.right, x, l)
         return l
 
@@ -145,3 +145,56 @@ class Tree:
         self._delete(t, p.item)
         d.item = new_key
         return t
+
+    def __iter__(self):
+        """In order iterate through tree structure"""
+        return inorder(self.root)
+
+
+def inorder(tree: Node):
+    """In order traversal"""
+    if tree:
+        # Recursively iterate over elements in the left sub-tree
+        for l_child in inorder(tree.left):
+            # Return left sub-tree data elements one-by-one
+            yield l_child
+        # Return data element from current node
+        yield tree.item
+        # Recursively iterate over elements in the right sub-tree
+        for r_child in inorder(tree.right):
+            # Return right sub-tree data elements one-by-one
+            yield r_child
+
+
+def preorder(tree: Node):
+    """Pre order traversal"""
+    if tree:
+        # Return data element from current node
+        yield tree.item
+
+        # Recursively iterate over elements in the left sub-tree
+        for l_child in preorder(tree.left):
+            # Return left sub-tree data elements one-by-one
+            yield l_child
+
+        # Recursively iterate over elements in the right sub-tree
+        for r_child in preorder(tree.right):
+            # Return right sub-tree data elements one-by-one
+            yield r_child
+
+
+def postorder(tree: Node):
+    """Post order traversal"""
+    if tree:
+        # Recursively iterate over elements in the left sub-tree
+        for l_child in postorder(tree.left):
+            # Return left sub-tree data elements one-by-one
+            yield l_child
+
+        # Recursively iterate over elements in the right sub-tree
+        for r_child in postorder(tree.right):
+            # Return right sub-tree data elements one-by-one
+            yield r_child
+
+        # Return data element from current node
+        yield tree.item
