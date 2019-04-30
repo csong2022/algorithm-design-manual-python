@@ -44,6 +44,7 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
+cover
 
 # Translations
 *.mo
@@ -92,3 +93,6 @@ ENV/
 # IntelliJ
 *.iml
 .idea
+
+# Output
+out
