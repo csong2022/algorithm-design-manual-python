@@ -3,6 +3,7 @@
 """
 Rank the desirability of suitors -- sorting example.
 """
+from algorist.utils.utils import cmp
 
 __author__ = "csong2022"
 
@@ -47,24 +48,16 @@ def read_suitors(_input) -> list:
 
 
 def suitor_compare(a: Suitor, b: Suitor) -> int:
-    if a.height < b.height:
-        return -1
-    if a.height > b.height:
-        return 1
+    result = cmp(a.height, b.height)
+    if result != 0:
+        return result
 
-    if a.weight < b.weight:
-        return -1
-    if a.weight > b.weight:
-        return 1
+    result = cmp(a.weight, b.weight)
+    if result != 0:
+        return result
 
-    if a.last < b.last:
-        return -1
-    if a.last > b.last:
-        return 1
+    result = cmp(a.last, b.last)
+    if result != 0:
+        return result
 
-    if a.first < b.first:
-        return -1
-    if a.first > b.first:
-        return 1
-
-    return 0
+    return cmp(a.first, b.first)
