@@ -17,7 +17,7 @@ class TestList(TestCase):
         self.l.print()
         self.assertTrue(1 in self.l)
         self.assertTrue(2 in self.l)
-        self.l.delete(2)
+        self.l.delete_r(2)
         self.assertFalse(2 in self.l)
 
 
@@ -48,7 +48,7 @@ class ListDemoTest(TestCase):
                     print("item %d deleted" % d)
                 else:
                     print("item to delete %d not found" % d)
-                l.delete(d)
+                l.delete_r(d)
 
     def test(self):
         execute(self, "list-in", "list-out")

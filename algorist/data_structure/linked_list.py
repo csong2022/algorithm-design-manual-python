@@ -11,6 +11,7 @@ __author__ = "csong2022"
 
 class Node:
     """List node."""
+
     def __init__(self, item, _next=None):
         self.item = item  # data item
         self.next = _next  # point to successor
@@ -41,7 +42,7 @@ class List:
         self.head = Node(x, self.head)
 
     def delete(self, x) -> None:
-        """Delete value."""
+        """Delete value iteratively."""
         pred = None
         p = self.head
 
@@ -55,6 +56,20 @@ class List:
             else:
                 pred.next = p.next
             p.next = None
+
+    def delete_r(self, x) -> None:
+        """Delete value."""
+        self.head = self._delete_r(self.head, x)
+
+    def _delete_r(self, n, x) -> Node:
+        """Delete value recursively."""
+        if n is None:
+            return None
+        elif n.item == x:
+            return n.next
+        else:
+            n.next = self._delete_r(n.next, x)
+            return n
 
     def __iter__(self):
         """Iterate over the linked list in LIFO order."""
