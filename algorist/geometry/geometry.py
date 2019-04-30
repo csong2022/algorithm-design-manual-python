@@ -42,12 +42,8 @@ class Point:
 
         return p
 
-    def distance_to(self, other) -> float:
-        return Point.distance(self, other)
-
-    @staticmethod
-    def distance(a, b) -> float:
-        d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+    def distance_to(self, b) -> float:
+        d = (self.x - b.x) * (self.x - b.x) + (self.y - b.y) * (self.y - b.y)
         return sqrt(d)
 
     def point_in_box(self, b1, b2) -> bool:
@@ -103,58 +99,50 @@ class Line:
         c = -(a * p.x + b * p.y)
         return Line(a, b, c)
 
-    @staticmethod
-    def parallel_q(l1, l2) -> bool:
+    def parallel_q(self, l2) -> bool:
         """Are two lines parallel?"""
-        return abs(l1.a - l2.a) <= EPSILON and abs(l1.b - l2.b) <= EPSILON
+        return abs(self.a - l2.a) <= EPSILON and abs(self.b - l2.b) <= EPSILON
 
-    @staticmethod
-    def same_line_q(l1, l2) -> bool:
-        """Are they the same line?"""
-        return Line.parallel_q(l1, l2) and abs(l1.c - l2.c) <= EPSILON
+    def __eq__(self, l2):
+        """Overrides the default implementation"""
+        if isinstance(l2, Line):
+            return self.parallel_q(l2) and abs(self.c - l2.c) <= EPSILON
+        return False
 
-    @staticmethod
-    def intersection_point(l1, l2) -> Point:
+    def intersection_point(self, l2) -> Point:
         """Intersection point of two lines."""
-        if l1 == l2:
+        if self == l2:
             print("Warning: Identical lines, all points intersect.")
             return Point(0.0, 0.0)
 
-        if Line.parallel_q(l1, l2):
+        if self.parallel_q(l2):
             print("Error: Distinct parallel lines do not intersect.")
             return None
 
-        x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b)
+        x = (l2.b * self.c - self.b * l2.c) / (l2.a * self.b - self.a * l2.b)
 
-        if abs(l1.b) > EPSILON:  # test for vertical line
-            y = - (l1.a * x + l1.c) / l1.b
+        if abs(self.b) > EPSILON:  # test for vertical line
+            y = - (self.a * x + self.c) / self.b
         else:
             y = - (l2.a * x + l2.c) / l2.b
 
         return Point(x, y)
 
-    @staticmethod
-    def closest_point(p_in: Point, l) -> Point:
+    def closest_point(self, p_in: Point) -> Point:
         """Closest point on the line."""
-        if abs(l.b) <= EPSILON:  # vertical line
-            x = -l.c
+        if abs(self.b) <= EPSILON:  # vertical line
+            x = -self.c
             y = p_in.y
 
             return Point(x, y)
 
-        if abs(l.a) <= EPSILON:  # horizontal line
+        if abs(self.a) <= EPSILON:  # horizontal line
             x = p_in.x
-            y = -l.c
+            y = -self.c
             return Point(x, y)
 
-        perp = Line.point_and_slope_to_line(p_in, 1 / l.a)  # non-degenerate line
-        return Line.intersection_point(l, perp)
-
-    def __eq__(self, other):
-        """Overrides the default implementation"""
-        if isinstance(other, Line):
-            return Line.same_line_q(self, other)
-        return False
+        perp = Line.point_and_slope_to_line(p_in, 1 / self.a)  # non-degenerate line
+        return self.intersection_point(perp)
 
     def print(self) -> None:
         print(str(self))
@@ -170,23 +158,22 @@ class Segment:
         self.p1 = p1  # endpoints of line segment
         self.p2 = p2
 
-    @staticmethod
-    def segments_intersect(s1, s2) -> bool:
-        l1 = Line.points_to_line(s1.p1, s1.p2)
+    def intersect(self, s2) -> bool:
+        l1 = Line.points_to_line(self.p1, self.p2)
         l2 = Line.points_to_line(s2.p1, s2.p2)
 
         if l1 == l2:  # overlapping or disjoint segments
-            return s1.p1.point_in_box(s2.p1, s2.p2) or \
-                   s1.p2.point_in_box(s2.p1, s2.p2) or \
-                   s2.p1.point_in_box(s1.p1, s1.p2) or \
-                   s2.p2.point_in_box(s1.p1, s1.p2)
+            return self.p1.point_in_box(s2.p1, s2.p2) or \
+                   self.p2.point_in_box(s2.p1, s2.p2) or \
+                   s2.p1.point_in_box(self.p1, self.p2) or \
+                   s2.p2.point_in_box(self.p1, self.p2)
 
-        if Line.parallel_q(l1, l2):
+        if l1.parallel_q(l2):
             return False
 
-        p = Line.intersection_point(l1, l2)
+        p = l1.intersection_point(l2)
 
-        return p.point_in_box(s1.p1, s1.p2) and p.point_in_box(s2.p1, s2.p2)
+        return p.point_in_box(self.p1, self.p2) and p.point_in_box(s2.p1, s2.p2)
 
     def print(self) -> None:
         print("segment: ", end='')
@@ -214,29 +201,44 @@ class Triangle:
         self.c = c  # point c
 
     def point_in_triangle(self, p: Point) -> bool:
-        return not Triangle.cw(self.a, self.b, p) and \
-               not Triangle.cw(self.b, self.c, p) and \
-               not Triangle.cw(self.c, self.a, p)
+        return not cw(self.a, self.b, p) and \
+               not cw(self.b, self.c, p) and \
+               not cw(self.c, self.a, p)
 
-    @staticmethod
-    def signed_triangle_area(a: Point, b: Point, c: Point) -> float:
-        return (a.x * b.y - a.y * b.x + a.y * c.x - a.x * c.y + b.x * c.y - c.x * b.y) / 2.0
+    def signed_area(self):
+        return signed_triangle_area(self.a, self.b, self.c)
 
-    @staticmethod
-    def triangle_area(a: Point, b: Point, c: Point) -> float:
-        return abs(Triangle.signed_triangle_area(a, b, c))
+    def area(self):
+        return abs(self.signed_area())
 
-    @staticmethod
-    def ccw(a: Point, b: Point, c: Point) -> bool:
-        return Triangle.signed_triangle_area(a, b, c) > EPSILON
+    def ccw(self):
+        return self.signed_area() > EPSILON
 
-    @staticmethod
-    def cw(a: Point, b: Point, c: Point) -> bool:
-        return Triangle.signed_triangle_area(a, b, c) < -EPSILON
+    def cw(self):
+        return self.signed_area() < -EPSILON
 
-    @staticmethod
-    def collinear(a: Point, b: Point, c: Point) -> bool:
-        return abs(Triangle.signed_triangle_area(a, b, c)) <= EPSILON
+    def collinear(self):
+        return self.area() <= EPSILON
+
+
+def signed_triangle_area(a: Point, b: Point, c: Point) -> float:
+    return (a.x * b.y - a.y * b.x + a.y * c.x - a.x * c.y + b.x * c.y - c.x * b.y) / 2.0
+
+
+def triangle_area(a: Point, b: Point, c: Point) -> float:
+    return abs(signed_triangle_area(a, b, c))
+
+
+def ccw(a: Point, b: Point, c: Point) -> bool:
+    return signed_triangle_area(a, b, c) > EPSILON
+
+
+def cw(a: Point, b: Point, c: Point) -> bool:
+    return signed_triangle_area(a, b, c) < -EPSILON
+
+
+def collinear(a: Point, b: Point, c: Point) -> bool:
+    return abs(signed_triangle_area(a, b, c)) <= EPSILON
 
 
 class Triangulation:

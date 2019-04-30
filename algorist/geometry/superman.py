@@ -28,7 +28,7 @@ def superman(s: Point, t: Point, c: list, ncircles: int) -> None:
     line = Line.points_to_line(s, t)  # line from start to target position
 
     for i in range(1, ncircles + 1):
-        close = Line.closest_point(c[i].c, line)
+        close = line.closest_point(c[i].c)
         d = c[i].c.distance_to(close)
 
         if 0 <= d < c[i].r and close.point_in_box(s, t):
