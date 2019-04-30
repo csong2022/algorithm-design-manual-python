@@ -1,9 +1,16 @@
 algorithm-design-manual-python
-========================
+==============================
 
 Python translation of algorithm design manual C code. Code has been tested in Python 3.6
 
 Original C code <https://www3.cs.stonybrook.edu/~skiena/algorist/book/programs/>
+
+Features:
+1. Translated original C programs in procedural language style into Object Oriented fashion. Remove all global variables.
+2. Converted original test cases, included in test-script, into set of nosetests.
+3. Implemented generic Graph data structure to cover unweighted, weights, flow graph instances. Removed code duplication in original C implementation.
+
+List of files:
 
 Chapter 3. Data Structures
 algorist.data_structure
