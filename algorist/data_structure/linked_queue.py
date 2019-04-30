@@ -64,7 +64,9 @@ class Queue:
             current = current.next
 
     def print(self) -> None:
-        print(' '.join(str(x) for x in self))
+        for x in self:
+            print(x, end=' ')
+        print()
 
     def size(self):
         return self.count
