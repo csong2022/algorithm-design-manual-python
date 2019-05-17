@@ -107,3 +107,20 @@ Chapter 18. Set and String Problems
 algorist.string
 
 - name.py --- corporate name changing program -- string example
+
+Project setup
+1. Check out source code
+
+2. Create Python virtual environment
+https://docs.python.org/3/tutorial/venv.html
+python3 -m venv ~/venv
+source ~/venv/bin/activate
+
+Install required Python pacakges
+pip install -r requirements.txt
+make
+
+3. Setup in IntelliJ
+Install Python Community Edition Plugin
+File / Project Structure...
+Create new Python SDK pointing to existing virtual environment in ~/venv
