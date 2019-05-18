@@ -43,6 +43,7 @@ algorist.graph
 - connected.py --- compute connected components of a graph
 - bipartite.py --- Two color a bipartite graph
 - findcycle.py --- identify a cycle in a graph, if one exists
+- biconnected.py --- Identify articulation vertices in a graph
 - topsort1.py --- Topologically sort a directed acyclic graph by DFS numbering (DAG)
 - topsort.py --- topologically sort a directed acyclic graph
 - strong.py --- Identify strongly connected components in a graph
