@@ -13,7 +13,7 @@ from algorist.graph.bfs_dfs import EdgeType, DFS
 from algorist.graph.graph import GraphSearchCallback, Graph
 
 
-def strong_components(g: Graph):
+def strong_components(g: Graph) -> None:
     """
     Identify strongly connected components in a graph.
     """
@@ -74,5 +74,5 @@ class StrongCallback(GraphSearchCallback):
                 if self.entry_time(y) < self.entry_time(self.low[x]):
                     self.low[x] = y
 
-    def entry_time(self, v: int) -> None:
+    def entry_time(self, v: int) -> int:
         return self.dfs.entry_time[v]

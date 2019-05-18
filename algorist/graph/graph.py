@@ -52,7 +52,7 @@ class GraphSearchCallback:
         """Process edge."""
         pass
 
-    def valid_edge(self, e):
+    def valid_edge(self, e) -> bool:
         """Validate edge."""
         return True
 
@@ -76,7 +76,7 @@ class Graph:
         self.validate_vertex(y)
         return next((p for p in self.edges[x] if p.y == y), None)
 
-    def validate_vertex(self, v: int):
+    def validate_vertex(self, v: int) -> None:
         if v < 1 or v > self.nvertices:
             raise IndexError('Invalid vertex %d' % v)
 

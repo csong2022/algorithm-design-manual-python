@@ -115,7 +115,7 @@ class DFS(AbstractGraphSearch):
         self.time = 0  # current event time
         self.finished = False  # if true, cut off search immediately
 
-    def initialize(self):
+    def initialize(self) -> None:
         super().initialize()
         self.time = 0
 

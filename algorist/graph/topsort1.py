@@ -28,7 +28,7 @@ class TopSort1Callback(GraphSearchCallback):
             print("Warning: directed cycle found, not a DAG")
 
 
-def topsort(g: Graph):
+def topsort(g: Graph) -> None:
     dfs = DFS(g)
     callback = TopSort1Callback(dfs)
 

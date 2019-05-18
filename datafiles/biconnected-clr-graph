@@ -22,17 +22,17 @@
 22:  23 21
 23:  22 21 19
 parent articulation vertex: 23 
-parent articulation vertex: 19 via bridge
-non-leaf articulation vertex: 23 
-parent articulation vertex: 19 via bridge
+bridge articulation vertex: 19 
+bridge articulation vertex: 23 
+bridge articulation vertex: 19 
 parent articulation vertex: 15 
-parent articulation vertex: 14 via bridge
-non-leaf articulation vertex: 15 
+bridge articulation vertex: 14 
+bridge articulation vertex: 15 
 parent articulation vertex: 11 
-parent articulation vertex: 7 via bridge
-non-leaf articulation vertex: 11 
-parent articulation vertex: 8 via bridge
+bridge articulation vertex: 7 
+bridge articulation vertex: 11 
+bridge articulation vertex: 8 
 parent articulation vertex: 7 
 parent articulation vertex: 7 
-parent articulation vertex: 4 via bridge
-non-leaf articulation vertex: 7 
+bridge articulation vertex: 4 
+bridge articulation vertex: 7 
