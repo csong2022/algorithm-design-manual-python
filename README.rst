@@ -91,6 +91,10 @@ algorist.numerical
 - bignum.py --- implementation of large integer arithmetic
 - matrix.py --- Multiply two matrices.
 
+Chapter 14. Combinatorial Problems
+algorist.combinatorial
+- gray_codes.py -- Generate n-bit Gray Codes.
+
 Chapter 17. Computational Geometry
 algorist.geometry
 
