@@ -5,6 +5,7 @@ Topologically sort a directed acyclic graph (DAG)
 
 Translate from topsort.c.
 """
+from typing import List
 
 __author__ = "csong2022"
 
@@ -12,7 +13,7 @@ from algorist.data_structure.linked_queue import Queue
 from algorist.graph.graph import Graph
 
 
-def compute_indegrees(g: Graph):  # indegree of each vertex
+def compute_indegrees(g: Graph) -> List:  # indegree of each vertex
     indegree = [0] * (g.nvertices + 1)
 
     for i in range(1, g.nvertices + 1):
@@ -22,7 +23,7 @@ def compute_indegrees(g: Graph):  # indegree of each vertex
     return indegree
 
 
-def topsort(g: Graph):
+def topsort(g: Graph) -> List:
     _sorted = [None] * (g.nvertices + 1)
     indegree = compute_indegrees(g)
 

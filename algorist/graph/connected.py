@@ -18,7 +18,7 @@ class ConnectedCallback(GraphSearchCallback):
         print(" %d" % v, end='')
 
 
-def connected_components(g: Graph):
+def connected_components(g: Graph) -> None:
     bfs = BFS(g)
     callback = ConnectedCallback()
 
